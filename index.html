@@ -277,6 +277,7 @@
   dialog.lightbox::backdrop { background: rgba(14, 24, 21, 0.88); }
   .lightbox figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 12px; }
   .lightbox img { display: block; max-width: min(1100px, 94vw); max-height: 80vh; width: auto; height: auto; border-radius: 10px; }
+  .lightbox[data-uniform] img { width: min(760px, 92vw, 76vh); height: min(760px, 92vw, 76vh); max-height: none; object-fit: contain; }
   .lightbox img.headshot { width: min(440px, 84vw, 68vh); height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 16px; }
   .lightbox img.on-paper { background: var(--paper) url("assets/paper.jpg") repeat; padding: clamp(12px, 3vw, 32px); box-sizing: border-box; }
   .lightbox figcaption { font-family: var(--sans); font-size: 0.9375rem; line-height: 1.5; color: #e9efed; max-width: 70ch; text-align: justify; text-align-last: center; }
@@ -406,6 +407,7 @@
       <a href="#home">Home</a>
       <a href="#research">Research</a>
       <a href="#people">People</a>
+      <a href="#supervision">Supervision</a>
       <a href="#join" class="nav-join">Join us</a>
       <a href="#publications">Publications</a>
       <a href="#teaching">Teaching &amp; outreach</a>
@@ -760,6 +762,33 @@
     </div>
   </section>
 
+  <section class="section panel" id="tab-supervision" data-title="Supervision">
+    <div class="wrap">
+      <h2>Supervision style</h2>
+      <div class="section-body">
+        <ul class="values" aria-label="Key principles">
+          <li><img src="assets/microbes/cluster.webp" alt="">Open communication</li>
+          <li><img src="assets/microbes/oval-ochre.webp" alt="">Clarity</li>
+          <li><img src="assets/microbes/pair.webp" alt="">Two-way feedback</li>
+          <li><img class="wide" src="assets/microbes/chain.webp" alt="">Feedforward</li>
+          <li><img src="assets/microbes/rods-ochre.webp" alt="">Tailored guidance</li>
+          <li><img src="assets/microbes/rod-red.webp" alt="">Growing independence</li>
+          <li><img src="assets/microbes/rod-on-oval.webp" alt="">Safe to ask</li>
+          <li><img src="assets/microbes/oval-blue.webp" alt="">Credit for your work</li>
+        </ul>
+        <p>When I started supervising, I thought it was mostly about passing on knowledge. I soon learned that it depends far more on communication: knowing what each student wants from the project and talking openly about progress. A project with me follows four steps.</p>
+        <ol class="steps">
+          <li><span class="step-name">Kick-off</span> We agree how we'll work together: how much independence or guidance you'd like, the grade you're aiming for and what the assessment rubric asks for it, your working schedule, and whether you prefer feedback in person or in writing.</li>
+          <li><span class="step-name">Regular check-ins</span> Short, regular meetings keep the project moving. Feedback goes both ways: I ask how my supervision is working for you and adjust it.</li>
+          <li><span class="step-name">Mid-term evaluation</span> A formal check against the rubric, followed by feedforward: concrete next steps to close any gaps between where you are and where you want to be, while there is still time.</li>
+          <li><span class="step-name">Final evaluation</span> We assess the work against the same rubric, and you tell me what I could do better for the next student.</li>
+        </ol>
+        <p>Most of the students I've supervised became co-authors on published papers, and many went on to PhDs. You can meet them under <a href="#people">People</a>, and if you would like to work with me, have a look at <a href="#join">Join us</a>.</p>
+
+      </div>
+    </div>
+  </section>
+
   <section class="section panel" id="tab-join" data-title="Join us">
     <div class="wrap">
       <h2>Join us</h2>
@@ -791,31 +820,7 @@
     <div class="wrap subsection">
       <h2>What you'll learn</h2>
       <div class="section-body">
-        <p>You'll learn the methods your project needs, from fluorescence in situ hybridization and microscopy to isotope labeling and genome analysis, along with planning experiments, analyzing data and presenting your results. You'll work in an international team, and good results often end up in a publication with you as a co-author.</p>
-
-      </div>
-    </div>
-    <div class="wrap subsection">
-      <h2 id="supervision">Supervision style</h2>
-      <div class="section-body">
-        <ul class="values" aria-label="Key principles">
-          <li><img src="assets/microbes/cluster.webp" alt="">Open communication</li>
-          <li><img src="assets/microbes/oval-ochre.webp" alt="">Clarity</li>
-          <li><img src="assets/microbes/pair.webp" alt="">Two-way feedback</li>
-          <li><img class="wide" src="assets/microbes/chain.webp" alt="">Feedforward</li>
-          <li><img src="assets/microbes/rods-ochre.webp" alt="">Tailored guidance</li>
-          <li><img src="assets/microbes/rod-red.webp" alt="">Growing independence</li>
-          <li><img src="assets/microbes/rod-on-oval.webp" alt="">Safe to ask</li>
-          <li><img src="assets/microbes/oval-blue.webp" alt="">Credit for your work</li>
-        </ul>
-        <p>When I started supervising, I thought it was mostly about passing on knowledge. I soon learned that it depends far more on communication: knowing what each student wants from the project and talking openly about progress. A project with me follows four steps.</p>
-        <ol class="steps">
-          <li><span class="step-name">Kick-off</span> We agree how we'll work together: how much independence or guidance you'd like, the grade you're aiming for and what the assessment rubric asks for it, your working schedule, and whether you prefer feedback in person or in writing.</li>
-          <li><span class="step-name">Regular check-ins</span> Short, regular meetings keep the project moving. Feedback goes both ways: I ask how my supervision is working for you and adjust it.</li>
-          <li><span class="step-name">Mid-term evaluation</span> A formal check against the rubric, followed by feedforward: concrete next steps to close any gaps between where you are and where you want to be, while there is still time.</li>
-          <li><span class="step-name">Final evaluation</span> We assess the work against the same rubric, and you tell me what I could do better for the next student.</li>
-        </ol>
-        <p>Most of the students I've supervised became co-authors on published papers, and many went on to PhDs. You can meet them under <a href="#people">People</a>.</p>
+        <p>You'll learn the methods your project needs, from fluorescence in situ hybridization and microscopy to isotope labeling and genome analysis, along with planning experiments, analyzing data and presenting your results. You'll work in an international team, and good results often end up in a publication with you as a co-author. How I supervise is described under <a href="#supervision">Supervision</a>.</p>
 
       </div>
     </div>
@@ -1055,6 +1060,7 @@
     group = scope ? Array.prototype.slice.call(scope.querySelectorAll('.shot')) : [btn];
     idx = group.indexOf(btn); opener = btn;
     if (group.length < 2) dlg.setAttribute('data-single', ''); else dlg.removeAttribute('data-single');
+    if (scope && scope.matches('ul.gallery')) dlg.setAttribute('data-uniform', ''); else dlg.removeAttribute('data-uniform');
     render(); dlg.showModal();
   }
   function step(d) { if (group.length < 2) return; idx = (idx + d + group.length) % group.length; render(); }
