@@ -304,6 +304,9 @@
   .granule-figs .shot img { aspect-ratio: auto; }
   .granule-figs figcaption { font-family: var(--sans); font-size: 0.8125rem; line-height: 1.4; color: var(--muted); }
   .section .wrap.subsection { margin-top: clamp(40px, 6vw, 64px); padding-top: clamp(40px, 6vw, 64px); border-top: 1px solid var(--rule); }
+  .portrait-wash { will-change: transform; transform-origin: 60% 40%; }
+  .site-footer { overflow: hidden; }
+  .footer-wash { will-change: transform; transform: scale(1.07); transform-origin: 50% 100%; }
 </style>
 </head>
 <body>
@@ -962,6 +965,40 @@
   }
   window.addEventListener('hashchange', function () { show(location.hash, true); });
   show(location.hash, false);
+})();
+</script>
+<script>
+// Gentle parallax for the watercolor washes: the microbes behind the portrait drift and turn,
+// and the wash at the foot of the page slides into place as it comes into view
+(function () {
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var wash = document.querySelector('.portrait-wash');
+  var band = document.querySelector('.footer-wash');
+  var ticking = false;
+  function update() {
+    ticking = false;
+    var vh = window.innerHeight || 800;
+    if (wash && wash.offsetParent) {
+      var r = wash.parentElement.getBoundingClientRect();
+      if (r.bottom > -100 && r.top < vh) {
+        var t = Math.max(0, -r.top + 120);
+        var dy = Math.min(t * 0.22, 90), rot = Math.min(t * 0.035, 14);
+        wash.style.transform = 'translate3d(' + (-dy * 0.25).toFixed(1) + 'px,' + dy.toFixed(1) + 'px,0) rotate(' + rot.toFixed(2) + 'deg)';
+      }
+    }
+    if (band) {
+      var fr = band.getBoundingClientRect();
+      if (fr.top < vh && fr.bottom > 0) {
+        var k = Math.min(1, Math.max(0, fr.top / vh));
+        band.style.transform = 'translate3d(' + (-k * 50).toFixed(1) + 'px,' + (k * 40).toFixed(1) + 'px,0) scale(1.07)';
+      }
+    }
+  }
+  function request() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+  window.addEventListener('scroll', request, { passive: true });
+  window.addEventListener('resize', request);
+  window.addEventListener('hashchange', request);
+  update();
 })();
 </script>
 <script src="assets/aggregates.js" defer></script>
