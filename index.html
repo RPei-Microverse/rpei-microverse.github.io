@@ -302,6 +302,7 @@
   .granule-figs figure { margin: 0; display: flex; flex-direction: column; gap: 6px; }
   .granule-figs .shot img { aspect-ratio: auto; }
   .granule-figs figcaption { font-family: var(--sans); font-size: 0.8125rem; line-height: 1.4; color: var(--muted); }
+  .section .wrap.subsection { margin-top: clamp(40px, 6vw, 64px); padding-top: clamp(40px, 6vw, 64px); border-top: 1px solid var(--rule); }
 </style>
 </head>
 <body>
@@ -756,7 +757,7 @@
 
   <section class="section panel" id="tab-teaching" data-title="Teaching and outreach">
     <div class="wrap">
-      <h2>Teaching &amp; outreach</h2>
+      <h2>Teaching</h2>
       <div class="section-body">
         <p>Most of my teaching so far has been hands-on: supervising projects, preparing practical courses and running tutorials. How I work with individual students is described under <a href="#supervision">supervision style</a>.</p>
         <p>I would like to develop a course on imaging methods for bioprocess research, combining the principles with hands-on microscopy and image analysis, and a project-based course on wastewater treatment in which students tackle real sustainability problems with current literature and invited practitioners.</p>
@@ -767,7 +768,11 @@
           <li><span class="yr">2022</span><span>Prepared and supervised the practical MSc course Water Microbiology, Wetsus</span></li>
         </ul>
 
-        <h3 class="group" id="outreach">Outreach</h3>
+      </div>
+    </div>
+    <div class="wrap subsection">
+      <h2 id="outreach">Outreach</h2>
+      <div class="section-body">
         <p>I share my research with people outside academia, from school students to the professionals who run treatment plants. Explaining microbes in plain language has also made me a clearer teacher and supervisor.</p>
         <figure class="outreach-photo" data-gallery>
           <button type="button" class="shot" data-full="assets/outreach/long-night-of-research.webp" data-caption="Young visitors look at microbes under the microscope during the Long Night of Research at the University of Vienna."><img src="assets/outreach/long-night-of-research-sm.webp" width="1000" height="666" alt="Researchers in University of Vienna shirts show two children microscope images on a screen, with fluorescence micrographs on a large display behind them" loading="lazy"></button>
