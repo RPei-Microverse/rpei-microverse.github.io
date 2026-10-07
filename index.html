@@ -56,7 +56,13 @@
   .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
 
   /* Header */
-  .site-header { padding: 22px 0; border-bottom: 1px solid var(--rule); }
+  .site-header {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
+    padding: 16px 0; border-bottom: 1px solid var(--rule);
+    background: color-mix(in srgb, var(--paper) 90%, transparent);
+    -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  }
+  [id] { scroll-margin-top: 96px; }
   .site-header .wrap { max-width: none; }
   .site-header .wrap { display: flex; align-items: baseline; justify-content: space-between; gap: 12px 16px; flex-wrap: wrap; }
   .site-name { font-family: var(--sans); font-weight: 600; font-size: 1.0625rem; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
@@ -333,6 +339,25 @@
   /* Home has its own Contact section, so its footer is just the painting */
   html[data-tab="home"] .footer-inner { display: none; }
   html[data-tab="home"] .footer-wash { margin-top: 0; }
+  /* Phones: one swipeable row of tabs, bigger tap targets, compact sticky bar */
+  @media (max-width: 640px) {
+    .site-header { padding: 10px 0 0; }
+    .site-header .wrap { flex-direction: column; align-items: stretch; gap: 2px; flex-wrap: nowrap; }
+    .site-nav {
+      flex-wrap: nowrap; overflow-x: auto; gap: 0 20px; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+      margin: 0 calc(-1 * var(--gutter)); padding: 0 calc(var(--gutter) + 40px) 0 var(--gutter);
+      -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 44px), transparent);
+              mask-image: linear-gradient(to right, #000 calc(100% - 44px), transparent);
+    }
+    .site-nav::-webkit-scrollbar { display: none; }
+    .site-nav a { white-space: nowrap; padding: 10px 0 9px; font-size: 1rem; }
+    [id] { scroll-margin-top: 110px; }
+    .profiles a, .footer-links a { display: inline-block; padding: 6px 0; }
+    .lb-prev, .lb-next { top: auto; bottom: 20px; transform: none; }
+    .lb-prev { left: calc(50% - 56px); }
+    .lb-next { right: calc(50% - 56px); }
+    .lightbox img { max-height: 70vh; }
+  }
 </style>
 </head>
 <body>
@@ -375,14 +400,25 @@
     </div>
   </section>
 
+  <section class="section" id="contact">
+    <div class="wrap">
+      <h2>Contact</h2>
+      <div class="section-body">
+        <p>I'm always glad to hear from students, collaborators and practitioners interested in the spatial organization of microbial communities, microbial interactions, biological wastewater treatment and resource recovery.</p>
+        <p class="contact-line"><a href="mailto:ruizhe.pei@univie.ac.at">ruizhe.pei@univie.ac.at</a></p>
+        <p class="note">Division of Microbial Ecology, University of Vienna, Austria</p>
+      </div>
+    </div>
+  </section>
+
   <section class="section news" id="news">
     <div class="wrap">
       <h2>News</h2>
       <div class="section-body">
         <ul class="years news-list">
-          <li><span class="yr">2026</span><span>Invited seminar at the Department of Environmental Microbiology, Eawag</span></li>
           <li><span class="yr">Jul 2026</span><span>Talk at the EMBO | EMBL Symposium <i>Metabolic interactions shape ecosystems</i>, Heidelberg</span></li>
           <li><span class="yr">May 2026</span><span>Talk at the IWA Nutrient Removal and Recovery Conference in Delft, where I also served on the organizing and scientific committee</span></li>
+          <li><span class="yr">Apr 2026</span><span>Invited seminar at the Department of Environmental Microbiology, Eawag</span></li>
           <li><span class="yr">Apr 2026</span><span>Showing young visitors microbes under the microscope at the Long Night of Research in Vienna</span></li>
           <li><span class="yr">May 2025</span><span>Started my Marie Skłodowska-Curie fellowship <a href="#projects">INTERACT</a> on nitrifiers and their partners</span></li>
           <li><span class="yr">May 2025</span><span>Keynote at the IWA Resource Recovery Conference in Leeuwarden</span></li>
@@ -434,17 +470,6 @@
             <span class="shot-caption">A floc after 24 hours</span>
           </li>
       </ul>
-    </div>
-  </section>
-
-  <section class="section" id="contact">
-    <div class="wrap">
-      <h2>Contact</h2>
-      <div class="section-body">
-        <p>I'm always glad to hear from students, collaborators and practitioners interested in the spatial organization of microbial communities, microbial interactions, biological wastewater treatment and resource recovery.</p>
-        <p class="contact-line"><a href="mailto:ruizhe.pei@univie.ac.at">ruizhe.pei@univie.ac.at</a></p>
-        <p class="note">Division of Microbial Ecology, University of Vienna, Austria</p>
-      </div>
     </div>
   </section>
 
@@ -987,6 +1012,13 @@
     if (e.key === 'ArrowRight') step(1);
   });
   dlg.addEventListener('close', function () { img.removeAttribute('src'); if (opener) opener.focus(); });
+  var sx = null, sy = null;
+  dlg.addEventListener('touchstart', function (e) { var t = e.changedTouches[0]; sx = t.clientX; sy = t.clientY; }, { passive: true });
+  dlg.addEventListener('touchend', function (e) {
+    if (sx === null) return;
+    var t = e.changedTouches[0], dx = t.clientX - sx, dy = t.clientY - sy; sx = null;
+    if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.5) step(dx < 0 ? 1 : -1);
+  }, { passive: true });
 })();
 </script>
 <script>
@@ -999,6 +1031,13 @@
     var se = document.documentElement, prev = se.style.scrollBehavior;
     se.style.scrollBehavior = 'auto'; window.scrollTo(0, 0); se.style.scrollBehavior = prev;
   }
+  // On phones the menu is one scrollable row: keep the current tab in view
+  function centerTab() {
+    var nav = document.querySelector('.site-nav'), cur = nav && nav.querySelector('[aria-current="page"]');
+    if (!nav || !cur || nav.scrollWidth <= nav.clientWidth) return;
+    var nr = nav.getBoundingClientRect(), cr = cur.getBoundingClientRect();
+    nav.scrollLeft = nav.scrollLeft + (cr.left - nr.left) - (nav.clientWidth - cr.width) / 2;
+  }
   function show(hash, scroll) {
     var id = decodeURIComponent((hash || '').replace(/^#/, ''));
     // Panels use ids like "tab-people" so the browser never jumps to them on its own
@@ -1008,6 +1047,7 @@
     var name = panel.id.replace(/^tab-/, '');
     panels.forEach(function (p) { p.classList.toggle('is-active', p === panel); });
     document.documentElement.setAttribute('data-tab', name);
+    requestAnimationFrame(centerTab);
     links.forEach(function (a) {
       if (a.getAttribute('href') === '#' + name) a.setAttribute('aria-current', 'page');
       else a.removeAttribute('aria-current');
