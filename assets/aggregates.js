@@ -140,8 +140,7 @@
 
   // Painted ground: a few faint overlapping washes that dissolve into the paper at the edges
   var wash = document.createElement('canvas'), scale = 1, dpr = 1;
-  var darkMQ = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
-  function isDark() { return !!(darkMQ && darkMQ.matches); }
+  function isDark() { return document.documentElement.getAttribute('data-theme') === 'dark'; }
   function mulberry(a) {
     return function () {
       a |= 0; a = a + 0x6D2B79F5 | 0;
@@ -262,6 +261,7 @@
   resize();
   window.addEventListener('resize', resize);
 
+  document.addEventListener('themechange', function () { draw(); });
   if (reduce) return;
   var running = false, visible = false, last = 0;
   function frame(ts) {

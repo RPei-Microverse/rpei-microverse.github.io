@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
-<script>document.documentElement.classList.add("js");</script>
+<script>document.documentElement.classList.add("js");(function(){var t=null;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="dark"&&t!=="light"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.setAttribute("data-theme",t);document.documentElement.style.colorScheme=t;})();</script>
 <title>Ruizhe Pei</title>
 <meta name="description" content="Ruizhe Pei, Marie Skłodowska-Curie fellow at the University of Vienna, studying how microbial communities assemble in space, with granular sludge bioreactors as a model ecosystem, toward ecology-informed microbiome engineering.">
 <meta property="og:title" content="Ruizhe Pei">
@@ -402,30 +402,40 @@
   }
   @media (max-width: 560px) { .footer-copy { font-size: 0.75rem; line-height: 1.4; } }
 
-  /* ===== Night mode: follows the visitor's device setting ===== */
-  picture { display: contents; }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      color-scheme: dark;
-      --paper: #111614;        /* soft black with a hint of green */
-      --ink: #E4E7E1;          /* warm off-white text */
-      --muted: #9FAAA5;
-      --rule: #2B3431;
-      --link: #2D9F84;         /* the site's teal (same hue), lightened just enough to read on dark */
-      --link-hover: #40CAA9;
-      --accent: #E8845F;
-      --wash: #24384A;
-    }
-    body { background: var(--paper) url("assets/paper.jpg") repeat; background-size: 1116px auto; background-blend-mode: multiply; }
-    .button, .button:hover { color: #0F1312; }
-    /* hand-drawn sketches keep their paper so the ink stays readable */
-    .shot.sketch { background: #F3F0E8 url("assets/paper.jpg") repeat; background-size: 1116px auto; border-radius: 12px; padding: 10px; }
-    .footer-copy { color: var(--ink); }
-    /* supervision keywords: pale sage paint on dark paper */
-    ul.values li::before { background-image: url("assets/wash-tile-1-dark.webp"); }
-    ul.values li:nth-child(4n+2)::before { background-image: url("assets/wash-tile-2-dark.webp"); }
-    ul.values li:nth-child(4n+3)::before { background-image: url("assets/wash-tile-3-dark.webp"); }
-    ul.values li:nth-child(4n+4)::before { background-image: url("assets/wash-tile-4-dark.webp"); }
+  /* ===== Night mode: follows the device setting until the visitor picks one with the switch ===== */
+  html[data-theme="dark"] {
+    color-scheme: dark;
+    --paper: #111614;        /* soft black with a hint of green */
+    --ink: #E4E7E1;          /* warm off-white text */
+    --muted: #9FAAA5;
+    --rule: #2B3431;
+    --link: #2D9F84;         /* the site's teal (same hue), lightened just enough to read on dark */
+    --link-hover: #40CAA9;
+    --accent: #E8845F;
+    --wash: #24384A;
+  }
+  html[data-theme="dark"] body { background: var(--paper) url("assets/paper.jpg") repeat; background-size: 1116px auto; background-blend-mode: multiply; }
+  html[data-theme="dark"] .button, html[data-theme="dark"] .button:hover { color: #0F1312; }
+  /* hand-drawn sketches keep their paper so the ink stays readable */
+  html[data-theme="dark"] .shot.sketch { background: #F3F0E8 url("assets/paper.jpg") repeat; background-size: 1116px auto; border-radius: 12px; padding: 10px; }
+  html[data-theme="dark"] .footer-copy { color: var(--ink); }
+  /* supervision keywords: pale sage paint on dark paper */
+  html[data-theme="dark"] ul.values li::before { background-image: url("assets/wash-tile-1-dark.webp"); }
+  html[data-theme="dark"] ul.values li:nth-child(4n+2)::before { background-image: url("assets/wash-tile-2-dark.webp"); }
+  html[data-theme="dark"] ul.values li:nth-child(4n+3)::before { background-image: url("assets/wash-tile-3-dark.webp"); }
+  html[data-theme="dark"] ul.values li:nth-child(4n+4)::before { background-image: url("assets/wash-tile-4-dark.webp"); }
+  /* light/dark switch in the menu bar */
+  .site-nav { margin-left: auto; }
+  .theme-toggle { flex: none; align-self: center; width: 34px; height: 34px; display: grid; place-items: center; margin: -6px -6px -6px 6px; padding: 0; border: 0; border-radius: 50%; background: transparent; color: var(--muted); cursor: pointer; }
+  .theme-toggle:hover { color: var(--ink); background: color-mix(in srgb, var(--ink) 9%, transparent); }
+  .theme-toggle svg { width: 19px; height: 19px; display: block; }
+  .theme-toggle .icon-sun { display: none; }
+  html[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+  html[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+  html:not(.js) .theme-toggle { display: none; }
+  @media (max-width: 640px) {
+    .site-header .wrap { position: relative; }
+    .theme-toggle { position: absolute; top: -5px; right: calc(var(--gutter) - 6px); margin: 0; }
   }
 </style>
 </head>
@@ -444,6 +454,7 @@
       <a href="#teaching">Teaching &amp; outreach</a>
       <a href="#cv">CV</a>
     </nav>
+    <button type="button" class="theme-toggle" aria-label="Switch to dark mode" title="Switch to dark mode"><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/></svg><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg></button>
   </div>
 </header>
 
@@ -464,7 +475,7 @@
         <a class="recruit" href="#join"><span class="recruit-dot" aria-hidden="true"></span>Recruiting master's and bachelor's students for theses and internships</a>
       </div>
       <figure class="portrait">
-        <picture><source srcset="assets/wash-microbes-dark.webp" media="(prefers-color-scheme: dark)"><img class="portrait-wash" src="assets/wash-microbes.jpg" width="623" height="521" alt=""></picture>
+        <img class="portrait-wash" data-dark-src="assets/wash-microbes-dark.webp" src="assets/wash-microbes.jpg" width="623" height="521" alt="">
         <img class="portrait-photo" src="assets/ruizhe-pei.jpg" width="1031" height="1288" alt="Ruizhe Pei">
       </figure>
     </div>
@@ -1051,7 +1062,7 @@
       </ul>
     </div>
   </div>
-  <picture><source srcset="assets/wash-band-dark.webp" media="(prefers-color-scheme: dark)"><img class="footer-wash" src="assets/wash-band-short.jpg" width="2318" height="559" alt="" loading="lazy"></picture>
+  <img class="footer-wash" data-dark-src="assets/wash-band-dark.webp" src="assets/wash-band-short.jpg" width="2318" height="559" alt="" loading="lazy">
   <p class="footer-copy">© 2026 Ruizhe Pei. Watercolor illustration by Yujia Luo.</p>
 </footer>
 
@@ -1155,6 +1166,34 @@
   }
   window.addEventListener('hashchange', function () { show(location.hash, true); });
   show(location.hash, false);
+})();
+</script>
+<script>
+// Light/dark switch: follows the device until the visitor chooses, then remembers the choice
+(function () {
+  var root = document.documentElement, btn = document.querySelector('.theme-toggle');
+  var mq = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+  function stored() { try { return localStorage.getItem('theme'); } catch (e) { return null; } }
+  function apply(t) {
+    root.setAttribute('data-theme', t); root.style.colorScheme = t;
+    document.querySelectorAll('img[data-dark-src]').forEach(function (im) {
+      if (!im.getAttribute('data-light-src')) im.setAttribute('data-light-src', im.getAttribute('src'));
+      var want = t === 'dark' ? im.getAttribute('data-dark-src') : im.getAttribute('data-light-src');
+      if (im.getAttribute('src') !== want) im.setAttribute('src', want);
+    });
+    if (btn) { var label = t === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'; btn.setAttribute('aria-label', label); btn.title = label; }
+    document.dispatchEvent(new CustomEvent('themechange', { detail: t }));
+  }
+  apply(root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+  if (btn) btn.addEventListener('click', function () {
+    var t = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    try { localStorage.setItem('theme', t); } catch (e) {}
+    apply(t);
+  });
+  if (mq) {
+    var follow = function (e) { var s = stored(); if (s !== 'dark' && s !== 'light') apply(e.matches ? 'dark' : 'light'); };
+    if (mq.addEventListener) mq.addEventListener('change', follow); else if (mq.addListener) mq.addListener(follow);
+  }
 })();
 </script>
 <script src="assets/aggregates.js" defer></script>
