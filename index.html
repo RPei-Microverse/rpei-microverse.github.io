@@ -367,6 +367,13 @@
   /* Join us: tighter spacing between its sections */
   #tab-join .wrap.subsection { margin-top: clamp(20px, 2.6vw, 30px); padding-top: clamp(20px, 2.6vw, 30px); }
   #tab-join ul.topics, #tab-join ol.steps { margin-bottom: 0; }
+  /* Supervision keywords */
+  ul.values { list-style: none; margin: 0.2em 0 1.6em; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+  .section-body ul.values li { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; min-height: 108px; padding: 14px 10px 12px; border-radius: 14px;
+    font-family: var(--sans); font-weight: 600; font-size: 0.9375rem; line-height: 1.25; color: var(--ink); text-align: center; text-wrap: balance; -webkit-hyphens: manual; hyphens: manual;
+    background: color-mix(in srgb, var(--tint) 11%, var(--paper)); border: 1px solid color-mix(in srgb, var(--tint) 26%, var(--paper)); }
+  ul.values li img { flex: none; width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
+  @media (max-width: 560px) { ul.values { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; } .section-body ul.values li { min-height: 92px; font-size: 0.875rem; padding: 12px 8px 10px; } ul.values li img { width: 30px; height: 30px; } }
   #tab-join ul.topics li:last-child { padding-bottom: 0; }
   /* Keep all page text in front of the footer painting where they overlap */
   main { position: relative; z-index: 2; }
@@ -771,11 +778,21 @@
     <div class="wrap subsection">
       <h2 id="supervision">Supervision style</h2>
       <div class="section-body">
+        <ul class="values" aria-label="Key principles">
+          <li style="--tint: var(--accent)"><img src="assets/microbes/orange-cell.webp" width="22" height="22" alt="">Open communication</li>
+          <li style="--tint: var(--cobalt)"><img src="assets/microbes/blue-oval.webp" width="22" height="22" alt="">Clarity</li>
+          <li style="--tint: var(--brick)"><img src="assets/microbes/red-cell.webp" width="22" height="22" alt="">Two-way feedback</li>
+          <li style="--tint: var(--accent)"><img src="assets/microbes/orange-cell.webp" width="22" height="22" alt="">Feedforward</li>
+          <li style="--tint: var(--cobalt)"><img src="assets/microbes/blue-oval.webp" width="22" height="22" alt="">Tailored guidance</li>
+          <li style="--tint: var(--brick)"><img src="assets/microbes/red-cell.webp" width="22" height="22" alt="">Growing independence</li>
+          <li style="--tint: var(--accent)"><img src="assets/microbes/orange-cell.webp" width="22" height="22" alt="">Safe to ask</li>
+          <li style="--tint: var(--cobalt)"><img src="assets/microbes/blue-oval.webp" width="22" height="22" alt="">Credit for your work</li>
+        </ul>
         <p>When I started supervising, I thought it was mostly about passing on knowledge. I soon learned that it depends far more on communication: knowing what each student wants from the project and talking openly about progress. A project with me follows four steps.</p>
         <ol class="steps">
           <li><span class="step-name">Kick-off</span> We agree how we'll work together: how much independence or guidance you'd like, the grade you're aiming for and what the assessment rubric asks for it, your working schedule, and whether you prefer feedback in person or in writing.</li>
           <li><span class="step-name">Regular check-ins</span> Short, regular meetings keep the project moving. Feedback goes both ways: I ask how my supervision is working for you and adjust it.</li>
-          <li><span class="step-name">Mid-term evaluation</span> A formal check against the rubric while there is still time to close any gaps between where you are and where you want to be.</li>
+          <li><span class="step-name">Mid-term evaluation</span> A formal check against the rubric, followed by feedforward: concrete next steps to close any gaps between where you are and where you want to be, while there is still time.</li>
           <li><span class="step-name">Final evaluation</span> We assess the work against the same rubric, and you tell me what I could do better for the next student.</li>
         </ol>
         <p>Most of the students I've supervised became co-authors on published papers, and many went on to PhDs. You can meet them under <a href="#people">People</a>.</p>
