@@ -90,7 +90,7 @@
     margin: 0 0 0.45em;
     color: var(--link);
   }
-  .lede { font-size: clamp(1.25rem, 2.1vw, 1.5rem); line-height: 1.5; margin: 0 0 1.1em; max-width: 32ch; }
+  .lede { font-size: clamp(1.25rem, 2.1vw, 1.5rem); line-height: 1.5; margin: 0 0 1.1em; max-width: 38ch; }
   .role { font-family: var(--sans); font-size: 1rem; line-height: 1.5; color: var(--muted); margin: 0 0 1.5em; max-width: 42ch; }
   .profiles { display: flex; flex-wrap: wrap; gap: 10px 22px; margin: 0; padding: 0; list-style: none; font-family: var(--sans); font-size: 0.9375rem; font-weight: 500; }
 
@@ -112,6 +112,9 @@
   .section-body > :first-child { margin-top: 0; }
   .section-body > :last-child { margin-bottom: 0; }
   .section-body p { margin: 0 0 1em; }
+  /* Running text is justified, with hyphenation to keep word spacing even */
+  .section-body p, .section-body li, .section-body dd, .hero .lede { text-align: justify; -webkit-hyphens: auto; hyphens: auto; hyphenate-limit-chars: 7 3 3; }
+  .section-body .contact-line, .section-body .where, .section-body .fig-note, ul.people li, ul.team-strip li, ul.outreach-strip li, ul.gallery li, ul.profiles li { text-align: start; -webkit-hyphens: manual; hyphens: manual; }
   h3 { font-family: var(--sans); font-weight: 600; font-size: 1.125rem; line-height: 1.35; margin: 2em 0 0.15em; letter-spacing: -0.01em; }
   h3 + .where, h4 + .where { font-family: var(--sans); font-size: 0.9375rem; color: var(--muted); margin: 0 0 0.6em; }
   h4 { font-family: var(--sans); font-weight: 600; font-size: 1.125rem; line-height: 1.35; margin: 2em 0 0.3em; letter-spacing: -0.01em; text-wrap: balance; }
