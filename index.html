@@ -6,7 +6,7 @@
 <meta name="color-scheme" content="light">
 <script>document.documentElement.classList.add("js");</script>
 <title>Ruizhe Pei</title>
-<meta name="description" content="Ruizhe Pei, Marie Skłodowska-Curie fellow at the University of Vienna, studying how microbial communities organize in space, with bioreactors and granular sludge as model systems.">
+<meta name="description" content="Ruizhe Pei, Marie Skłodowska-Curie fellow at the University of Vienna, studying how microbial communities assemble in space, with granular sludge bioreactors as a model ecosystem, toward ecology-informed microbiome engineering.">
 <meta property="og:title" content="Ruizhe Pei">
 <meta property="og:description" content="Microbial ecology of engineered water systems, from single cells to communities.">
 <meta property="og:type" content="website">
@@ -105,7 +105,11 @@
   .section-body > :last-child { margin-bottom: 0; }
   .section-body p { margin: 0 0 1em; }
   h3 { font-family: var(--sans); font-weight: 600; font-size: 1.125rem; line-height: 1.35; margin: 2em 0 0.15em; letter-spacing: -0.01em; }
-  h3 + .where { font-family: var(--sans); font-size: 0.9375rem; color: var(--muted); margin: 0 0 0.6em; }
+  h3 + .where, h4 + .where { font-family: var(--sans); font-size: 0.9375rem; color: var(--muted); margin: 0 0 0.6em; }
+  h4 { font-family: var(--sans); font-weight: 600; font-size: 1.125rem; line-height: 1.35; margin: 2em 0 0.3em; letter-spacing: -0.01em; text-wrap: balance; }
+  h4 + .where { margin-top: -0.15em; }
+  h3.group { font-size: 1.25rem; color: var(--link); margin: 2.6em 0 0; padding-top: 1.4em; border-top: 1px solid var(--rule); }
+  h3.group + h4 { margin-top: 1.1em; }
 
   .vision { font-size: 1.25rem; line-height: 1.55; }
 
@@ -346,22 +350,31 @@
     <div class="wrap">
       <h2>Research</h2>
       <div class="section-body">
-        <p class="vision">In flocs, granules and biofilms, each microbial cell sits in a particular place: next to particular neighbors, and along gradients of oxygen and nutrients that the community itself creates. I study how this spatial organization arises and how it shapes what a community does, from removing nitrogen and phosphorus to storing carbon.</p>
-        <p>My model systems are bioreactors, above all granular sludge. Granules are dense, round aggregates that assemble themselves in a reactor, can be grown reproducibly in the lab and already treat wastewater at full scale. Because a single granule packs a whole treatment process into a few millimeters, it lets me connect where cells sit with what the reactor achieves.</p>
+        <p class="vision">Microbial communities are organized in space. In flocs, granules and biofilms, each cell sits next to particular neighbors, along gradients of oxygen and nutrients that the community itself creates. My research asks what sets this organization: which parts of it the environment dictates, which are left to chance and history, and how we can use that knowledge to engineer better microbiomes.</p>
+
+        <h4>Spatial assembly of microbial communities</h4>
+        <p>I want to understand how environmental selection shapes spatial organization at every scale, from the overall state of a community, to the arrangement of functions within an aggregate, down to which organism sits next to which. The key questions are how much of this organization recurs when the same environment is set up independently several times, and how that changes from the broad layout down to immediate neighbors. Answering them means mapping where individual organisms sit across whole aggregates.</p>
+
+        <h4>Granular sludge as a model ecosystem</h4>
+        <p>Bioreactors make these questions testable with real replication. My main model is aerobic granular sludge. Granules assemble themselves from a mixed community into dense, layered aggregates a few millimeters across, and parallel reactors can be started from the same community and run under controlled conditions. Running reactors from the lab bench to demonstration scale gave me the practical experience to keep open, diverse communities stable for the months these experiments take.</p>
 
         <figure class="aggregates">
           <canvas id="aggregates" role="img" aria-label="Animated watercolor illustration of bacteria of different shapes gathering into a round granule, turning slowly, then loosening and gathering again"></canvas>
         </figure>
 
-        <h3>Nitrifiers and their neighbors</h3>
+        <h4>Ecology-informed microbiome engineering</h4>
+        <p>Knowing which features of spatial organization the environment fixes, and which it leaves open, also tells an engineer what can be steered. I want to turn assembly rules into design rules: choosing reactor conditions that reliably produce communities with the structure and functions we need, for nutrient removal and resource recovery.</p>
+
+        <h3 class="group">Projects</h3>
+        <h4>Nitrifiers and their neighbors</h4>
         <p class="where">University of Vienna, since 2024</p>
         <p>Nitrifiers turn ammonium into nitrate. They grow in dense microcolonies inside flocs and granules, surrounded by heterotrophic bacteria. I map which microbes keep company with nitrifiers across wastewater treatment plants worldwide, then use methods that keep cells in place, such as FISH, stable-isotope probing and chemical imaging, together with cell sorting, to test what actually passes between neighbors. Comparative genomics fills in the other half: many community members cannot make every compound they need, and these auxotrophies tie their fate to their neighbors.</p>
 
-        <h3>How granules form</h3>
+        <h4>How granules form</h4>
         <p class="where">EPFL, 2023–2024</p>
         <p>An aerobic granule is layered: oxygen reaches its outer shell but not its core, and different organisms settle in each zone. I studied how these granules form, using light-sheet microscopy to follow their structure in three dimensions. I also integrated metagenomics, metatranscriptomics and metaproteomics to connect the genetic potential of the granules' key phosphorus remover, <i>Candidatus</i> Accumulibacter phosphatis, with what it does in the reactor, and tested microfluidic strategies to isolate it, since it has never been grown in pure culture.</p>
 
-        <h3>Bioplastics from sludge</h3>
+        <h4>Bioplastics from sludge</h4>
         <p class="where">PhD, Wetsus and TU Delft, 2018–2022</p>
         <p>Surplus activated sludge is usually a disposal problem. I studied how process conditions shape the amount and quality of polyhydroxyalkanoates (PHA) that sludge can store, developed staining methods to see which cells in a floc store the polymer and how much each one holds, and helped scale production from a 1.5-liter lab reactor to a 10 m³ demonstration plant together with industry and water authority partners.</p>
 
@@ -409,7 +422,7 @@
         </ol>
         <p class="fig-note">From lab bench to demonstration plant: reactor volume and daily PHA production at each scale.</p>
 
-        <h3>Methods</h3>
+        <h3 class="group">Methods</h3>
         <dl class="methods">
           <dt>Seeing cells in place</dt>
           <dd>FISH, Raman-FISH, confocal and light-sheet microscopy, MALDI mass spectrometry imaging</dd>

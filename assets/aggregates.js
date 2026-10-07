@@ -7,7 +7,8 @@
 
   var W = 680, H = 320;            // logical size of the scene
   var CX = W / 2, CY = H / 2;      // where the granule forms
-  var CYCLE = 34;                  // seconds for one loop
+  var CYCLE = 34;                  // simulated seconds for one loop
+  var SPEED = 2;                   // simulated seconds per real second (one loop takes 17 s)
   var PALETTE = ['#3466AE', '#3466AE', '#CF9230', '#A8474D', '#1F6F5C', '#E57C56'];
 
   // Seeded random numbers so the scene starts the same way on every visit
@@ -263,7 +264,9 @@
   function frame(ts) {
     if (!running) return;
     var dt = Math.min(0.05, (ts - last) / 1000 || 1 / 60); last = ts;
-    simTime += dt; step(dt, simTime); draw();
+    // the scene develops at twice real time: two simulation steps per frame
+    for (var sp = 0; sp < SPEED; sp++) { simTime += dt; step(dt, simTime); }
+    draw();
     requestAnimationFrame(frame);
   }
   function update() {
