@@ -314,13 +314,13 @@
     .project-fig { max-width: 260px; }
     .grant { flex-direction: column; align-items: flex-start; }
   }
-  .concept { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.55fr); gap: 20px; align-items: end; margin: 0.6em 0 1em; }
-  .concept figure { margin: 0; display: flex; flex-direction: column; gap: 6px; }
-  .concept figcaption { font-family: var(--sans); font-size: 0.8125rem; line-height: 1.4; color: var(--muted); }
+  .concept { display: grid; grid-template-columns: minmax(0, 1.01fr) minmax(0, 2.26fr); gap: 24px 32px; align-items: start; margin: 0.8em 0 1.2em; }
+  .concept figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .concept figcaption { font-family: var(--sans); font-size: 0.8125rem; line-height: 1.4; color: var(--muted); text-align: center; text-wrap: balance; max-width: 40ch; }
   .shot.sketch { background: transparent; border-radius: 0; }
   .shot.sketch img { aspect-ratio: auto; }
   .shot.sketch:hover img { transform: none; }
-  @media (max-width: 560px) { .concept { grid-template-columns: 1fr; } .concept figure:first-child { max-width: 300px; } }
+  @media (max-width: 560px) { .concept { grid-template-columns: 1fr; } .concept figure:first-child { width: 100%; max-width: 240px; justify-self: center; } }
   .granule-figs { display: grid; grid-template-columns: minmax(0, 1.335fr) minmax(0, 1fr); gap: 12px; margin: 0.6em 0 0.4em; align-items: start; }
   .granule-figs figure { margin: 0; display: flex; flex-direction: column; gap: 6px; }
   .granule-figs .shot img { aspect-ratio: auto; }
