@@ -140,6 +140,8 @@
 
   // Painted ground: a few faint overlapping washes that dissolve into the paper at the edges
   var wash = document.createElement('canvas'), scale = 1, dpr = 1;
+  var darkMQ = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+  function isDark() { return !!(darkMQ && darkMQ.matches); }
   function mulberry(a) {
     return function () {
       a |= 0; a = a + 0x6D2B79F5 | 0;
@@ -204,11 +206,12 @@
     var cs = Math.cos(ang), sn = Math.sin(ang), k = scale * dpr;
     ctx.setTransform(k * cs, k * sn, -k * sn, k * cs, k * x, k * y);
     ctx.fillStyle = color; ctx.strokeStyle = color;
-    ctx.globalAlpha = 0.14;
+    var dk = isDark();
+    ctx.globalAlpha = dk ? 0.2 : 0.14;
     ctx.beginPath(); ctx.ellipse(0, 0, len / 2 + 1.4, wid / 2 + 1.4, 0, 0, Math.PI * 2); ctx.fill();
-    ctx.globalAlpha = 0.6;
+    ctx.globalAlpha = dk ? 0.92 : 0.6;
     ctx.beginPath(); ctx.ellipse(0, 0, len / 2, wid / 2, 0, 0, Math.PI * 2); ctx.fill();
-    ctx.globalAlpha = 0.55; ctx.lineWidth = 0.7; ctx.stroke();
+    ctx.globalAlpha = dk ? 0.8 : 0.55; ctx.lineWidth = 0.7; ctx.stroke();
   }
 
   var simTime = 0;
@@ -217,7 +220,7 @@
     ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over';
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(wash, 0, 0);
-    ctx.globalCompositeOperation = 'multiply';
+    ctx.globalCompositeOperation = isDark() ? 'source-over' : 'multiply';
     drawMatrix(phase(simTime).settled, simTime);
     filaments.forEach(function (fl) {
       for (var k = 0; k < fl.segs.length; k++) {

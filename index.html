@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="light">
+<meta name="color-scheme" content="light dark">
 <script>document.documentElement.classList.add("js");</script>
 <title>Ruizhe Pei</title>
 <meta name="description" content="Ruizhe Pei, Marie Skłodowska-Curie fellow at the University of Vienna, studying how microbial communities assemble in space, with granular sludge bioreactors as a model ecosystem, toward ecology-informed microbiome engineering.">
@@ -401,6 +401,32 @@
     padding: 3px 12px; border-radius: 10px; background: color-mix(in srgb, var(--paper) 72%, transparent);
   }
   @media (max-width: 560px) { .footer-copy { font-size: 0.75rem; line-height: 1.4; } }
+
+  /* ===== Night mode: follows the visitor's device setting ===== */
+  picture { display: contents; }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: dark;
+      --paper: #111614;        /* soft black with a hint of green */
+      --ink: #E4E7E1;          /* warm off-white text */
+      --muted: #9FAAA5;
+      --rule: #2B3431;
+      --link: #7CCBB3;         /* the site's teal, lifted for dark */
+      --link-hover: #A5DECB;
+      --accent: #E8845F;
+      --wash: #24384A;
+    }
+    body { background: var(--paper) url("assets/paper.jpg") repeat; background-size: 1116px auto; background-blend-mode: multiply; }
+    .button, .button:hover { color: #0F1312; }
+    /* hand-drawn sketches keep their paper so the ink stays readable */
+    .shot.sketch { background: #F3F0E8 url("assets/paper.jpg") repeat; background-size: 1116px auto; border-radius: 12px; padding: 10px; }
+    .footer-copy { color: var(--ink); }
+    /* supervision keywords: pale sage paint on dark paper */
+    ul.values li::before { background-image: url("assets/wash-tile-1-dark.webp"); }
+    ul.values li:nth-child(4n+2)::before { background-image: url("assets/wash-tile-2-dark.webp"); }
+    ul.values li:nth-child(4n+3)::before { background-image: url("assets/wash-tile-3-dark.webp"); }
+    ul.values li:nth-child(4n+4)::before { background-image: url("assets/wash-tile-4-dark.webp"); }
+  }
 </style>
 </head>
 <body>
@@ -438,7 +464,7 @@
         <a class="recruit" href="#join"><span class="recruit-dot" aria-hidden="true"></span>Recruiting master's and bachelor's students for theses and internships</a>
       </div>
       <figure class="portrait">
-        <img class="portrait-wash" src="assets/wash-microbes.jpg" width="623" height="521" alt="">
+        <picture><source srcset="assets/wash-microbes-dark.webp" media="(prefers-color-scheme: dark)"><img class="portrait-wash" src="assets/wash-microbes.jpg" width="623" height="521" alt=""></picture>
         <img class="portrait-photo" src="assets/ruizhe-pei.jpg" width="1031" height="1288" alt="Ruizhe Pei">
       </figure>
     </div>
@@ -1025,7 +1051,7 @@
       </ul>
     </div>
   </div>
-  <img class="footer-wash" src="assets/wash-band-short.jpg" width="2318" height="559" alt="" loading="lazy">
+  <picture><source srcset="assets/wash-band-dark.webp" media="(prefers-color-scheme: dark)"><img class="footer-wash" src="assets/wash-band-short.jpg" width="2318" height="559" alt="" loading="lazy"></picture>
   <p class="footer-copy">© 2026 Ruizhe Pei. Watercolor illustration by Yujia Luo.</p>
 </footer>
 
