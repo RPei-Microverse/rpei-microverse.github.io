@@ -255,6 +255,9 @@
   .scale-vol { color: var(--muted); }
   .scale-out { color: var(--link); font-weight: 600; }
   @media (max-width: 560px) { ol.scaleup { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .outreach-photo { margin: 1.2em 0 0.4em; display: flex; flex-direction: column; gap: 8px; }
+  .outreach-photo .shot img { aspect-ratio: 3 / 2; }
+  .outreach-photo figcaption { font-family: var(--sans); font-size: 0.875rem; line-height: 1.5; color: var(--muted); }
 </style>
 </head>
 <body>
@@ -656,6 +659,10 @@
 
         <h3 class="group" id="outreach">Outreach</h3>
         <p>I share my research with people outside academia, from school students to the professionals who run treatment plants. Explaining microbes in plain language has also made me a clearer teacher and supervisor.</p>
+        <figure class="outreach-photo">
+          <button type="button" class="shot" data-full="assets/outreach/long-night-of-research.webp" data-caption="Young visitors look at microbes under the microscope during the Long Night of Research at the University of Vienna."><img src="assets/outreach/long-night-of-research-sm.webp" width="1000" height="666" alt="Researchers in University of Vienna shirts show two children microscope images on a screen, with fluorescence micrographs on a large display behind them" loading="lazy"></button>
+          <figcaption>Young visitors look at microbes under the microscope during the Long Night of Research at the University of Vienna.</figcaption>
+        </figure>
         <h4>Public and schools</h4>
         <ul class="years">
           <li><span class="yr">2024, 2026</span><span>Long Night of Research (Lange Nacht der Forschung), Austria's public science festival</span></li>
