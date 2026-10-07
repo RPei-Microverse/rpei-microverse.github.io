@@ -276,6 +276,20 @@
   .path-photos.single .shot img { aspect-ratio: auto; }
   a.person-name { color: var(--ink); text-decoration-color: var(--accent); }
   a.person-name:hover { color: var(--link); }
+  .project { display: grid; grid-template-columns: minmax(0, 1fr) 210px; gap: 22px; align-items: start; }
+  .project-text > p { margin: 0 0 0.8em; }
+  .project-fig { margin: 0.25em 0 0; display: flex; flex-direction: column; gap: 6px; }
+  .project-fig .shot img { aspect-ratio: 1; }
+  .project-fig figcaption { font-family: var(--sans); font-size: 0.8125rem; line-height: 1.4; color: var(--muted); }
+  .grant { display: flex; gap: 12px; align-items: center; margin-top: 0.4em; }
+  .grant img { flex: none; width: 120px; height: auto; border-radius: 3px; }
+  .grant p { margin: 0; font-family: var(--sans); font-size: 0.8125rem; line-height: 1.45; color: var(--muted); }
+  .pub-single { margin: 0 0 1.2em; }
+  @media (max-width: 560px) {
+    .project { grid-template-columns: 1fr; }
+    .project-fig { max-width: 260px; }
+    .grant { flex-direction: column; align-items: flex-start; }
+  }
 </style>
 </head>
 <body>
@@ -379,33 +393,53 @@
     <div class="wrap">
       <h2>Research</h2>
       <div class="section-body">
-        <p class="vision">Microbial communities are organized in space. In flocs, granules and biofilms, each cell sits next to particular neighbors, along gradients of oxygen and nutrients that the community itself creates. My research asks what sets this organization: which parts of it the environment dictates, which are left to chance and history, and how we can use that knowledge to engineer better microbiomes.</p>
+        <p class="vision">In flocs, granules and biofilms, every microbial cell has particular neighbors and sits in gradients the community itself creates. I ask what sets this spatial organization, what is left to chance, and how we can use it to engineer microbiomes.</p>
 
         <h4>Spatial assembly of microbial communities</h4>
-        <p>I want to understand how environmental selection shapes spatial organization at every scale, from the overall state of a community, to the arrangement of functions within an aggregate, down to which organism sits next to which. The key questions are how much of this organization recurs when the same environment is set up independently several times, and how that changes from the broad layout down to immediate neighbors. Answering them means mapping where individual organisms sit across whole aggregates.</p>
+        <p>How does the environment shape spatial organization, from the layout of a whole aggregate down to which organism sits next to which? And how much of it recurs when the same environment is set up independently?</p>
 
         <h4>Granular sludge as a model ecosystem</h4>
-        <p>Bioreactors make these questions testable with real replication. My main model is aerobic granular sludge. Granules assemble themselves from a mixed community into dense, layered aggregates a few millimeters across, and parallel reactors can be started from the same community and run under controlled conditions. Running reactors from the lab bench to demonstration scale gave me the practical experience to keep open, diverse communities stable for the months these experiments take.</p>
+        <p>Granules assemble themselves into dense, layered aggregates, and parallel reactors can be started from the same community. That gives real replication, which few natural systems offer.</p>
 
         <figure class="aggregates">
           <canvas id="aggregates" role="img" aria-label="Animated watercolor illustration of bacteria of different shapes gathering into a round granule, turning slowly, then loosening and gathering again"></canvas>
         </figure>
 
         <h4>Ecology-informed microbiome engineering</h4>
-        <p>Knowing which features of spatial organization the environment fixes, and which it leaves open, also tells an engineer what can be steered. I want to turn assembly rules into design rules: choosing reactor conditions that reliably produce communities with the structure and functions we need, for nutrient removal and resource recovery.</p>
+        <p>Knowing what the environment fixes and what it leaves open tells us what can be steered, turning assembly rules into design rules for nutrient removal and resource recovery.</p>
 
         <h3 class="group">Projects</h3>
         <h4>Nitrifiers and their neighbors</h4>
         <p class="where">University of Vienna, since 2024</p>
-        <p>Nitrifiers turn ammonium into nitrate. They grow in dense microcolonies inside flocs and granules, surrounded by heterotrophic bacteria. I map which microbes keep company with nitrifiers across wastewater treatment plants worldwide, then use methods that keep cells in place, such as FISH, stable-isotope probing and chemical imaging, together with cell sorting, to test what actually passes between neighbors. Comparative genomics fills in the other half: many community members cannot make every compound they need, and these auxotrophies tie their fate to their neighbors.</p>
+        <div class="project">
+          <div class="project-text">
+            <p>Nitrifiers grow in dense microcolonies surrounded by heterotrophic bacteria. I combine FISH, stable-isotope probing, chemical imaging and comparative genomics to find out what passes between them, including compounds that many community members cannot make themselves.</p>
+            <div class="grant">
+              <img src="assets/msca-fellowship.png" width="120" height="68" alt="Marie Skłodowska-Curie Actions, funded by the European Union" loading="lazy">
+              <p>INTERACT: Microbial Interactions: Nitrifiers and their Partners in Complex Wastewater Microbiome. Funded by the European Union's Horizon Europe programme under Marie Skłodowska-Curie grant agreement No 101203185.</p>
+            </div>
+          </div>
+          <figure class="project-fig" data-gallery>
+            <button type="button" class="shot" data-full="assets/gallery/nitrifiers-wwtp.webp" data-caption="Nitrifier microcolonies in activated sludge from a wastewater treatment plant."><img src="assets/gallery/nitrifiers-wwtp-sm.webp" width="640" height="640" alt="Confocal image of activated sludge with dense round microcolonies of nitrifying bacteria" loading="lazy"></button>
+            <figcaption>Nitrifier microcolonies in activated sludge</figcaption>
+          </figure>
+        </div>
 
         <h4>How granules form</h4>
         <p class="where">EPFL, 2023–2024</p>
-        <p>An aerobic granule is layered: oxygen reaches its outer shell but not its core, and different organisms settle in each zone. I studied how these granules form, using light-sheet microscopy to follow their structure in three dimensions. I also integrated metagenomics, metatranscriptomics and metaproteomics to connect the genetic potential of the granules' key phosphorus remover, <i>Candidatus</i> Accumulibacter phosphatis, with what it does in the reactor, and tested microfluidic strategies to isolate it, since it has never been grown in pure culture.</p>
+        <div class="project">
+          <div class="project-text">
+            <p>I followed granule formation in three dimensions with light-sheet microscopy, and linked the genes, transcripts and proteins of the key phosphorus remover, <i>Candidatus</i> Accumulibacter phosphatis, to its activity in the reactor.</p>
+          </div>
+          <figure class="project-fig" data-gallery>
+            <button type="button" class="shot" data-full="assets/gallery/pao-ags.webp" data-caption="Polyphosphate-accumulating organisms (PAOs) in aerobic granular sludge."><img src="assets/gallery/pao-ags-sm.webp" width="640" height="624" alt="Multicolor confocal image of aerobic granular sludge with clusters of polyphosphate-accumulating organisms" loading="lazy"></button>
+            <figcaption>Phosphorus removers in granular sludge</figcaption>
+          </figure>
+        </div>
 
         <h4>Bioplastics from sludge</h4>
         <p class="where">PhD, Wetsus and TU Delft, 2018–2022</p>
-        <p>Surplus activated sludge is usually a disposal problem. I studied how process conditions shape the amount and quality of polyhydroxyalkanoates (PHA) that sludge can store, developed staining methods to see which cells in a floc store the polymer and how much each one holds, and helped scale production from a 1.5-liter lab reactor to a 10 m³ demonstration plant together with industry and water authority partners.</p>
+        <p>I studied how process conditions set the amount and quality of the bioplastic PHA that activated sludge stores, developed staining to see which cells store it, and helped scale production from a 1.5-liter reactor to a 10 m³ demonstration plant.</p>
 
         <div class="topic-figs three" data-gallery>
           <figure class="topic-fig">
@@ -421,7 +455,7 @@
             <figcaption>24 h</figcaption>
           </figure>
         </div>
-        <p class="fig-note">The same sludge during a PHA accumulation test, imaged by confocal microscopy. Green marks PHA, red the surrounding biomass.</p>
+        <p class="fig-note">PHA (green) building up in activated sludge over 24 hours.</p>
 
         <ol class="scaleup" data-gallery aria-label="Scaling up PHA production">
           <li>
@@ -449,7 +483,7 @@
             </figure>
           </li>
         </ol>
-        <p class="fig-note">From lab bench to demonstration plant: reactor volume and daily PHA production at each scale.</p>
+        <p class="fig-note">From lab bench to demonstration plant.</p>
 
         <h3 class="group">Methods</h3>
         <dl class="methods">
@@ -678,6 +712,9 @@
             <span class="pub-meta">Sudmalis D, Gagliano MC, <strong>Pei R</strong>, Grolle K, Plugge CM, Rijnaarts HHM, Zeeman G, Temmink H. <i>Water Research</i> (2018)</span>
           </li>
         </ol>
+        <h4>PhD thesis</h4>
+        <p class="pub-single"><span class="pub-title"><a href="https://doi.org/10.4233/uuid:c56e5ef7-0e80-4768-8016-5abb3f539c3d">Converting wastewater treatment plants into polyhydroxyalkanoate production factories</a></span>
+          <span class="pub-meta">Delft University of Technology (2022)</span></p>
         <p class="note">* Equal contribution. Citations and the full record are on <a href="https://scholar.google.com/citations?user=tqLBIQIAAAAJ">Google Scholar</a> and <a href="https://orcid.org/0000-0002-3355-3037">ORCID</a>.</p>
       </div>
     </div>
@@ -767,7 +804,7 @@
         <h3>Funding</h3>
         <div class="funding">
           <img src="assets/msca-fellowship.png" width="200" height="113" alt="Marie Skłodowska-Curie Actions Postdoctoral Fellowship, European Commission" loading="lazy">
-          <p>Marie Skłodowska-Curie Postdoctoral Fellowship (2025), <i>Microbial interactions: nitrifiers and their partners in complex wastewater microbiomes</i>. My work in Vienna is also part of the FWF Cluster of Excellence <i>Microbiomes Drive Planetary Health</i>.</p>
+          <p>Marie Skłodowska-Curie Postdoctoral Fellowship (2025), INTERACT: <i>Microbial Interactions: Nitrifiers and their Partners in Complex Wastewater Microbiome</i>, grant agreement No 101203185. My work in Vienna is also part of the FWF Cluster of Excellence <i>Microbiomes Drive Planetary Health</i>.</p>
         </div>
 
         <h3>Selected talks</h3>
