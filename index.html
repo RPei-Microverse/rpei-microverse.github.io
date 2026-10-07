@@ -262,6 +262,13 @@
   .path-photos .shot { border-radius: 10px; }
   .path-photos .shot img { aspect-ratio: 3 / 2; }
   .path-photos figcaption { grid-column: 1 / -1; font-family: var(--sans); font-size: 0.8125rem; color: var(--muted); }
+  .team { margin: 1.4em 0 0.6em; display: flex; flex-direction: column; gap: 8px; }
+  .team-main img { aspect-ratio: 4 / 3; }
+  .team-strip { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
+  .team-strip .shot { border-radius: 8px; }
+  .team-strip .shot img { aspect-ratio: 4 / 3; }
+  .team figcaption { font-family: var(--sans); font-size: 0.875rem; line-height: 1.5; color: var(--muted); }
+  @media (max-width: 560px) { .team-strip { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 </style>
 </head>
 <body>
@@ -449,6 +456,18 @@
       <h2>People</h2>
       <div class="section-body">
         <p>Students and staff I have supervised or co-supervised. Many went on to PhDs and research careers, and most became co-authors on published papers. Read about my <a href="#supervision">supervision style</a>, or see how to <a href="#join">join as a student</a>.</p>
+        <figure class="team" data-gallery>
+          <button type="button" class="shot team-main" data-full="assets/team/reactor-team-1.webp" data-caption="Team photo with the 160-liter pilot reactor."><img src="assets/team/reactor-team-1-lg.webp" width="1000" height="750" alt="Students and colleagues cheering in the reactor room next to the stainless steel pilot reactor, one holding a book and two holding mugs" loading="lazy"></button>
+          <ul class="team-strip">
+            <li><button type="button" class="shot" data-full="assets/team/reactor-team-2.webp" data-caption="Team photo with the 160-liter pilot reactor."><img src="assets/team/reactor-team-2-sm.webp" width="360" height="270" alt="Students and colleagues cheering in the reactor room next to the stainless steel pilot reactor" loading="lazy"></button></li>
+            <li><button type="button" class="shot" data-full="assets/team/reactor-team-3.webp" data-caption="Team photo with the 160-liter pilot reactor."><img src="assets/team/reactor-team-3-sm.webp" width="360" height="270" alt="Students and colleagues cheering in the reactor room next to the stainless steel pilot reactor" loading="lazy"></button></li>
+            <li><button type="button" class="shot" data-full="assets/team/reactor-team-4.webp" data-caption="Team photo with the 160-liter pilot reactor."><img src="assets/team/reactor-team-4-sm.webp" width="360" height="270" alt="Students and colleagues cheering in the reactor room next to the stainless steel pilot reactor" loading="lazy"></button></li>
+            <li><button type="button" class="shot" data-full="assets/team/reactor-team-5.webp" data-caption="Team photo with the 160-liter pilot reactor."><img src="assets/team/reactor-team-5-sm.webp" width="360" height="270" alt="Students and colleagues cheering in the reactor room next to the stainless steel pilot reactor" loading="lazy"></button></li>
+            <li><button type="button" class="shot" data-full="assets/team/reactor-team-6.webp" data-caption="Team photo with the 160-liter pilot reactor."><img src="assets/team/reactor-team-6-sm.webp" width="360" height="270" alt="Students and colleagues cheering in the reactor room next to the stainless steel pilot reactor" loading="lazy"></button></li>
+            <li><button type="button" class="shot" data-full="assets/team/reactor-team-7.webp" data-caption="Team photo with the 160-liter pilot reactor."><img src="assets/team/reactor-team-7-sm.webp" width="360" height="270" alt="Students and colleagues cheering in the reactor room next to the stainless steel pilot reactor" loading="lazy"></button></li>
+          </ul>
+          <figcaption>Team photos with the 160-liter pilot reactor over the years. Select a photo to browse them all.</figcaption>
+        </figure>
 
         <h3>Current</h3>
         <ul class="people">
