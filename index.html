@@ -298,6 +298,10 @@
   .shot.sketch img { aspect-ratio: auto; mix-blend-mode: multiply; }
   .shot.sketch:hover img { transform: none; }
   @media (max-width: 560px) { .concept { grid-template-columns: 1fr; } .concept figure:first-child { max-width: 300px; } }
+  .granule-figs { display: grid; grid-template-columns: minmax(0, 1.335fr) minmax(0, 1fr); gap: 12px; margin: 0.6em 0 0.4em; align-items: start; }
+  .granule-figs figure { margin: 0; display: flex; flex-direction: column; gap: 6px; }
+  .granule-figs .shot img { aspect-ratio: auto; }
+  .granule-figs figcaption { font-family: var(--sans); font-size: 0.8125rem; line-height: 1.4; color: var(--muted); }
 </style>
 </head>
 <body>
@@ -445,14 +449,26 @@
 
         <h4>How granules form</h4>
         <p class="where">EPFL, 2023–2024</p>
-        <div class="project">
-          <div class="project-text">
-            <p>I followed granule formation in three dimensions with light-sheet microscopy, and linked the genes, transcripts and proteins of the key phosphorus remover, <i>Candidatus</i> Accumulibacter phosphatis, to its activity in the reactor.</p>
+        <div data-gallery>
+          <div class="project">
+            <div class="project-text">
+              <p>I followed granule formation in three dimensions with light-sheet microscopy, and linked the genes, transcripts and proteins of the key phosphorus remover, <i>Candidatus</i> Accumulibacter phosphatis, to its activity in the reactor, and used microfluidic droplets to try to isolate it.</p>
+            </div>
+            <figure class="project-fig">
+              <button type="button" class="shot" data-full="assets/gallery/pao-ags.webp" data-caption="Polyphosphate-accumulating organisms (PAOs) in aerobic granular sludge."><img src="assets/gallery/pao-ags-sm.webp" width="640" height="624" alt="Multicolor confocal image of aerobic granular sludge with clusters of polyphosphate-accumulating organisms" loading="lazy"></button>
+              <figcaption>Phosphorus removers in granular sludge</figcaption>
+            </figure>
           </div>
-          <figure class="project-fig" data-gallery>
-            <button type="button" class="shot" data-full="assets/gallery/pao-ags.webp" data-caption="Polyphosphate-accumulating organisms (PAOs) in aerobic granular sludge."><img src="assets/gallery/pao-ags-sm.webp" width="640" height="624" alt="Multicolor confocal image of aerobic granular sludge with clusters of polyphosphate-accumulating organisms" loading="lazy"></button>
-            <figcaption>Phosphorus removers in granular sludge</figcaption>
-          </figure>
+          <div class="granule-figs">
+            <figure>
+              <button type="button" class="shot" data-full="assets/research/granules-grid.webp" data-caption="Granules from a lab reactor on millimeter paper."><img src="assets/research/granules-grid-sm.webp" width="640" height="479" alt="Two dark round granules and several pale lobed aggregates lying on millimeter grid paper, with a 1 mm scale bar" loading="lazy"></button>
+              <figcaption>Granules on millimeter paper</figcaption>
+            </figure>
+            <figure>
+              <button type="button" class="shot" data-full="assets/research/droplets.webp" data-caption="Microfluidic droplets for isolating cells; one droplet has captured a small cluster."><img src="assets/research/droplets-sm.webp" width="473" height="472" alt="Fluorescence image of round microfluidic droplets, one containing a cluster of stained cells, with a 10 micrometer scale bar" loading="lazy"></button>
+              <figcaption>Cells captured in a microfluidic droplet</figcaption>
+            </figure>
+          </div>
         </div>
 
         <h4>Bioplastics from sludge</h4>
