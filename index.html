@@ -330,6 +330,9 @@
   .avatar:not(:has(img)) { background: url("assets/microbes/orange-cell.webp") center / cover; color: transparent; }
   .person:nth-child(3n+2) .avatar:not(:has(img)) { background-image: url("assets/microbes/blue-oval.webp"); }
   .person:nth-child(3n) .avatar:not(:has(img)) { background-image: url("assets/microbes/red-cell.webp"); }
+  /* Home has its own Contact section, so its footer is just the painting */
+  html[data-tab="home"] .footer-inner { display: none; }
+  html[data-tab="home"] .footer-wash { margin-top: 0; }
 </style>
 </head>
 <body>
@@ -378,11 +381,12 @@
       <div class="section-body">
         <ul class="years news-list">
           <li><span class="yr">2026</span><span>Invited seminar at the Department of Environmental Microbiology, Eawag</span></li>
-          <li><span class="yr">2026</span><span>Talks at the EMBO | EMBL Symposium on metabolic interactions in ecosystems and at the IWA Nutrient Removal and Recovery Conference in Delft</span></li>
-          <li><span class="yr">2026</span><span>Showing young visitors microbes under the microscope at the Long Night of Research in Vienna</span></li>
-          <li><span class="yr">2025</span><span>Started my Marie Skłodowska-Curie fellowship <a href="#projects">INTERACT</a> on nitrifiers and their partners</span></li>
-          <li><span class="yr">2025</span><span>Keynote at the 5th IWA Resource Recovery Conference in Leeuwarden</span></li>
-          <li><span class="yr">2025</span><span>Our scale-up of PHA production from municipal sludge is out in <a href="https://doi.org/10.1016/j.watres.2025.123160"><i>Water Research</i></a></span></li>
+          <li><span class="yr">Jul 2026</span><span>Talk at the EMBO | EMBL Symposium <i>Metabolic interactions shape ecosystems</i>, Heidelberg</span></li>
+          <li><span class="yr">May 2026</span><span>Talk at the IWA Nutrient Removal and Recovery Conference in Delft, where I also served on the organizing and scientific committee</span></li>
+          <li><span class="yr">Apr 2026</span><span>Showing young visitors microbes under the microscope at the Long Night of Research in Vienna</span></li>
+          <li><span class="yr">May 2025</span><span>Started my Marie Skłodowska-Curie fellowship <a href="#projects">INTERACT</a> on nitrifiers and their partners</span></li>
+          <li><span class="yr">May 2025</span><span>Keynote at the IWA Resource Recovery Conference in Leeuwarden</span></li>
+          <li><span class="yr">May 2025</span><span>Our scale-up of PHA production from municipal sludge is out in <a href="https://doi.org/10.1016/j.watres.2025.123160"><i>Water Research</i></a></span></li>
         </ul>
       </div>
     </div>
@@ -430,6 +434,17 @@
             <span class="shot-caption">A floc after 24 hours</span>
           </li>
       </ul>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="wrap">
+      <h2>Contact</h2>
+      <div class="section-body">
+        <p>I'm always glad to hear from students, collaborators and practitioners interested in the spatial organization of microbial communities, microbial interactions, biological wastewater treatment and resource recovery.</p>
+        <p class="contact-line"><a href="mailto:ruizhe.pei@univie.ac.at">ruizhe.pei@univie.ac.at</a></p>
+        <p class="note">Division of Microbial Ecology, University of Vienna, Austria</p>
+      </div>
     </div>
   </section>
 
@@ -992,6 +1007,7 @@
     if (!panel) { panel = document.getElementById('tab-home'); target = panel; }
     var name = panel.id.replace(/^tab-/, '');
     panels.forEach(function (p) { p.classList.toggle('is-active', p === panel); });
+    document.documentElement.setAttribute('data-tab', name);
     links.forEach(function (a) {
       if (a.getAttribute('href') === '#' + name) a.setAttribute('aria-current', 'page');
       else a.removeAttribute('aria-current');
