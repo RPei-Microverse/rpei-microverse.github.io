@@ -171,9 +171,9 @@
   .contact-line { font-family: var(--sans); font-size: 1.0625rem; }
 
   /* Footer: contact details set into the watercolor band */
-  .site-footer { position: relative; margin-top: clamp(24px, 4vw, 48px); font-family: var(--sans); color: var(--ink); }
+  .site-footer { position: relative; margin-top: 0; font-family: var(--sans); color: var(--ink); }
   .footer-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 200px minmax(0, 680px); gap: 0 clamp(24px, 5vw, 64px); }
-  .footer-content { grid-column: 2; padding-top: clamp(28px, 3.4vw, 52px); }
+  .footer-content { grid-column: 2; padding-top: clamp(4px, 1vw, 12px); }
   .footer-content p { margin: 0; }
   .footer-title { font-weight: 600; font-size: 1.125rem; color: var(--link); margin-bottom: 4px !important; }
   .footer-email { font-size: 1.0625rem; }
@@ -181,7 +181,7 @@
   .footer-email a:hover, .footer-links a:hover { color: var(--link-hover); }
   .footer-links { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 22px; font-size: 0.9375rem; font-weight: 500; }
   .footer-join { display: inline-flex; align-items: center; gap: 8px; }
-  .footer-copy { margin-top: 14px !important; font-size: 0.8125rem; color: var(--ink); opacity: 0.7; }
+  .footer-copy { position: absolute; z-index: 1; left: 0; right: 0; bottom: clamp(8px, 1.4vw, 18px); margin: 0; text-align: center; font-size: 0.8125rem; color: var(--ink); opacity: 0.75; }
   .footer-wash {
     display: block; width: 100%; height: auto; margin-top: calc(-1 * clamp(150px, 15vw, 230px));
     -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 22%);
@@ -338,7 +338,7 @@
   .person:nth-child(3n) .avatar:not(:has(img)) { background-image: url("assets/microbes/red-cell.webp"); }
   /* Home has its own Contact section, so its footer is just the painting */
   html[data-tab="home"] .footer-inner { display: none; }
-  html[data-tab="home"] .footer-wash { margin-top: 0; }
+  html[data-tab="home"] .footer-wash { margin-top: calc(-1 * clamp(24px, 4vw, 56px)); }
   /* Phones: one swipeable row of tabs, bigger tap targets, compact sticky bar */
   @media (max-width: 640px) {
     .site-header { padding: 10px 0 0; }
@@ -968,10 +968,10 @@
         <li><a href="https://www.linkedin.com/in/rpei">LinkedIn</a></li>
         <li><a class="footer-join" href="#join"><span class="recruit-dot" aria-hidden="true"></span>Join us</a></li>
       </ul>
-      <p class="footer-copy">© 2026 Ruizhe Pei</p>
     </div>
   </div>
   <img class="footer-wash" src="assets/wash-band-short.jpg" width="1800" height="434" alt="" loading="lazy">
+  <p class="footer-copy">© 2026 Ruizhe Pei</p>
 </footer>
 
 <dialog class="lightbox" aria-label="Image viewer">
