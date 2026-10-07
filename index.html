@@ -114,7 +114,10 @@
   .section-body p { margin: 0 0 1em; }
   /* Running text is justified, with hyphenation to keep word spacing even */
   .section-body p, .section-body li, .section-body dd, .hero .lede { text-align: justify; -webkit-hyphens: auto; hyphens: auto; hyphenate-limit-chars: 7 3 3; }
-  .section-body .contact-line, .section-body .where, .section-body .fig-note, ul.people li, ul.team-strip li, ul.outreach-strip li, ul.gallery li, ul.profiles li { text-align: start; -webkit-hyphens: manual; hyphens: manual; }
+  .section-body .contact-line, .section-body .where, ul.people li, ul.team-strip li, ul.outreach-strip li, ul.gallery li, ul.profiles li { text-align: start; -webkit-hyphens: manual; hyphens: manual; }
+  figcaption, .fig-note { text-align: justify; -webkit-hyphens: auto; hyphens: auto; hyphenate-limit-chars: 7 3 3; }
+  /* Short labels under thumbnail grids stay left-aligned */
+  .topic-fig figcaption, .granule-figs figcaption, .project-fig figcaption { text-align: start; -webkit-hyphens: manual; hyphens: manual; }
   h3 { font-family: var(--sans); font-weight: 600; font-size: 1.125rem; line-height: 1.35; margin: 2em 0 0.15em; letter-spacing: -0.01em; }
   h3 + .where, h4 + .where { font-family: var(--sans); font-size: 0.9375rem; color: var(--muted); margin: 0 0 0.6em; }
   h4 { font-family: var(--sans); font-weight: 600; font-size: 1.125rem; line-height: 1.35; margin: 2em 0 0.3em; letter-spacing: -0.01em; text-wrap: balance; }
@@ -269,7 +272,7 @@
   .lightbox figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 12px; }
   .lightbox img { display: block; max-width: min(1100px, 94vw); max-height: 80vh; width: auto; height: auto; border-radius: 10px; }
   .lightbox img.on-paper { background: var(--paper) url("assets/paper.jpg") repeat; padding: clamp(12px, 3vw, 32px); box-sizing: border-box; }
-  .lightbox figcaption { font-family: var(--sans); font-size: 0.9375rem; line-height: 1.5; color: #e9efed; max-width: 70ch; text-align: center; }
+  .lightbox figcaption { font-family: var(--sans); font-size: 0.9375rem; line-height: 1.5; color: #e9efed; max-width: 70ch; text-align: justify; text-align-last: center; }
   .lb-btn { position: fixed; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; border: 0; cursor: pointer;
     background: rgba(255,255,255,0.12); color: #fff; font-family: var(--sans); font-size: 1.5rem; line-height: 1; }
   .lb-btn:hover { background: rgba(255,255,255,0.24); }
@@ -319,7 +322,7 @@
   }
   .concept { display: grid; grid-template-columns: minmax(0, 1.01fr) minmax(0, 2.26fr); gap: 24px 32px; align-items: start; margin: 0.8em 0 1.2em; }
   .concept figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 10px; }
-  .concept figcaption { font-family: var(--sans); font-size: 0.8125rem; line-height: 1.4; color: var(--muted); text-align: center; text-wrap: balance; max-width: 40ch; }
+  .concept figcaption { font-family: var(--sans); font-size: 0.8125rem; line-height: 1.4; color: var(--muted); text-align: justify; text-align-last: center; max-width: 40ch; }
   .shot.sketch { background: transparent; border-radius: 0; }
   .shot.sketch img { aspect-ratio: auto; }
   .shot.sketch:hover img { transform: none; }
@@ -578,7 +581,7 @@
             <figcaption>24 h</figcaption>
           </figure>
         </div>
-        <p class="fig-note">PHA (green) building up in activated sludge over 24 hours.</p>
+        <p class="fig-note">PHA (green) building up in activated sludge over 24&nbsp;hours.</p>
 
 
       </div>
