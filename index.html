@@ -258,6 +258,10 @@
   .outreach-photo { margin: 1.2em 0 0.4em; display: flex; flex-direction: column; gap: 8px; }
   .outreach-photo .shot img { aspect-ratio: 3 / 2; }
   .outreach-photo figcaption { font-family: var(--sans); font-size: 0.875rem; line-height: 1.5; color: var(--muted); }
+  .path-photos { margin: 10px 0 0; display: grid; grid-template-columns: 1.6fr 1fr; gap: 8px; max-width: 460px; align-items: end; }
+  .path-photos .shot { border-radius: 10px; }
+  .path-photos .shot img { aspect-ratio: 3 / 2; }
+  .path-photos figcaption { grid-column: 1 / -1; font-family: var(--sans); font-size: 0.8125rem; color: var(--muted); }
 </style>
 </head>
 <body>
@@ -699,6 +703,11 @@
             <span class="path-years">2018 to 2022</span>
             <span class="path-role">PhD in Environmental Biotechnology, Wetsus and TU Delft</span>
             <span class="path-place">With Mark van Loosdrecht, Robbert Kleerebezem and Alan Werker</span>
+            <figure class="path-photos" data-gallery>
+              <button type="button" class="shot" data-full="assets/phd/defense-diploma.webp" data-caption="Receiving my doctorate at TU Delft."><img src="assets/phd/defense-diploma-sm.webp" width="720" height="480" alt="Ruizhe Pei in white tie receiving the doctoral diploma tube from a professor in academic gown" loading="lazy"></button>
+              <button type="button" class="shot" data-full="assets/phd/defense-group.webp" data-caption="After the PhD defense at TU Delft."><img src="assets/phd/defense-group-sm.webp" width="720" height="480" alt="Group photo on the stairs after the PhD defense, with committee members in academic gowns" loading="lazy"></button>
+              <figcaption>PhD defense at TU Delft</figcaption>
+            </figure>
           </li>
           <li>
             <span class="path-years">2015 to 2017</span>
