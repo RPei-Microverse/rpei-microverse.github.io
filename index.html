@@ -367,13 +367,18 @@
   /* Join us: tighter spacing between its sections */
   #tab-join .wrap.subsection { margin-top: clamp(20px, 2.6vw, 30px); padding-top: clamp(20px, 2.6vw, 30px); }
   #tab-join ul.topics, #tab-join ol.steps { margin-bottom: 0; }
-  /* Supervision keywords */
+  /* Supervision keywords: four soft washes, each microbe on a contrasting tile */
   ul.values { list-style: none; margin: 0.2em 0 1.6em; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
-  .section-body ul.values li { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; min-height: 108px; padding: 14px 10px 12px; border-radius: 14px;
+  .section-body ul.values li { --bg: #E4EFE9; --edge: #CADFD3; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; min-height: 116px; padding: 14px 10px 13px; border-radius: 16px;
     font-family: var(--sans); font-weight: 600; font-size: 0.9375rem; line-height: 1.25; color: var(--ink); text-align: center; text-wrap: balance; -webkit-hyphens: manual; hyphens: manual;
-    background: color-mix(in srgb, var(--tint) 11%, var(--paper)); border: 1px solid color-mix(in srgb, var(--tint) 26%, var(--paper)); }
-  ul.values li img { flex: none; width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
-  @media (max-width: 560px) { ul.values { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; } .section-body ul.values li { min-height: 92px; font-size: 0.875rem; padding: 12px 8px 10px; } ul.values li img { width: 30px; height: 30px; } }
+    background: radial-gradient(120% 90% at 50% 0%, rgba(255,255,255,0.55), rgba(255,255,255,0) 60%), var(--bg); border: 1px solid var(--edge); }
+  .section-body ul.values li.v-sage  { --bg: #E4EFE9; --edge: #C8DED1; }
+  .section-body ul.values li.v-sky   { --bg: #E3ECF7; --edge: #C7D8EE; }
+  .section-body ul.values li.v-sand  { --bg: #F5ECD8; --edge: #E8D7B2; }
+  .section-body ul.values li.v-blush { --bg: #F7E4DC; --edge: #EDCBBD; }
+  ul.values li img { flex: none; width: 44px; height: 44px; object-fit: contain; }
+  ul.values li img.wide { width: 62px; margin: -4px 0; height: 52px; }
+  @media (max-width: 560px) { ul.values { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; } .section-body ul.values li { min-height: 100px; font-size: 0.875rem; padding: 12px 8px 11px; gap: 8px; } ul.values li img { width: 38px; height: 38px; } ul.values li img.wide { width: 54px; height: 46px; } }
   #tab-join ul.topics li:last-child { padding-bottom: 0; }
   /* Keep all page text in front of the footer painting where they overlap */
   main { position: relative; z-index: 2; }
@@ -779,14 +784,14 @@
       <h2 id="supervision">Supervision style</h2>
       <div class="section-body">
         <ul class="values" aria-label="Key principles">
-          <li style="--tint: var(--accent)"><img src="assets/microbes/orange-cell.webp" width="22" height="22" alt="">Open communication</li>
-          <li style="--tint: var(--cobalt)"><img src="assets/microbes/blue-oval.webp" width="22" height="22" alt="">Clarity</li>
-          <li style="--tint: var(--brick)"><img src="assets/microbes/red-cell.webp" width="22" height="22" alt="">Two-way feedback</li>
-          <li style="--tint: var(--accent)"><img src="assets/microbes/orange-cell.webp" width="22" height="22" alt="">Feedforward</li>
-          <li style="--tint: var(--cobalt)"><img src="assets/microbes/blue-oval.webp" width="22" height="22" alt="">Tailored guidance</li>
-          <li style="--tint: var(--brick)"><img src="assets/microbes/red-cell.webp" width="22" height="22" alt="">Growing independence</li>
-          <li style="--tint: var(--accent)"><img src="assets/microbes/orange-cell.webp" width="22" height="22" alt="">Safe to ask</li>
-          <li style="--tint: var(--cobalt)"><img src="assets/microbes/blue-oval.webp" width="22" height="22" alt="">Credit for your work</li>
+          <li class="v-sage"><img src="assets/microbes/cluster.webp" alt="">Open communication</li>
+          <li class="v-sky"><img src="assets/microbes/oval-ochre.webp" alt="">Clarity</li>
+          <li class="v-sand"><img src="assets/microbes/pair.webp" alt="">Two-way feedback</li>
+          <li class="v-blush"><img class="wide" src="assets/microbes/chain.webp" alt="">Feedforward</li>
+          <li class="v-sky"><img src="assets/microbes/rods-ochre.webp" alt="">Tailored guidance</li>
+          <li class="v-sage"><img src="assets/microbes/rod-red.webp" alt="">Growing independence</li>
+          <li class="v-blush"><img src="assets/microbes/rod-on-oval.webp" alt="">Safe to ask</li>
+          <li class="v-sand"><img src="assets/microbes/oval-blue.webp" alt="">Credit for your work</li>
         </ul>
         <p>When I started supervising, I thought it was mostly about passing on knowledge. I soon learned that it depends far more on communication: knowing what each student wants from the project and talking openly about progress. A project with me follows four steps.</p>
         <ol class="steps">
