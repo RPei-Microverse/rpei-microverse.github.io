@@ -424,18 +424,25 @@
   html[data-theme="dark"] ul.values li:nth-child(4n+2)::before { background-image: url("assets/wash-tile-2-dark.webp"); }
   html[data-theme="dark"] ul.values li:nth-child(4n+3)::before { background-image: url("assets/wash-tile-3-dark.webp"); }
   html[data-theme="dark"] ul.values li:nth-child(4n+4)::before { background-image: url("assets/wash-tile-4-dark.webp"); }
-  /* light/dark switch in the menu bar */
+  /* light/dark switch in the menu bar: an on/off slider */
   .site-nav { margin-left: auto; }
-  .theme-toggle { flex: none; align-self: center; width: 34px; height: 34px; display: grid; place-items: center; margin: -6px -6px -6px 6px; padding: 0; border: 0; border-radius: 50%; background: transparent; color: var(--muted); cursor: pointer; }
-  .theme-toggle:hover { color: var(--ink); background: color-mix(in srgb, var(--ink) 9%, transparent); }
-  .theme-toggle svg { width: 19px; height: 19px; display: block; }
-  .theme-toggle .icon-sun { display: none; }
-  html[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
-  html[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+  .theme-toggle { flex: none; align-self: center; margin: -4px 0 -4px 10px; padding: 4px; border: 0; background: transparent; cursor: pointer; border-radius: 999px; }
+  .tt-track { position: relative; display: block; width: 46px; height: 24px; border-radius: 999px; background: color-mix(in srgb, var(--ink) 12%, transparent); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ink) 14%, transparent); transition: background .25s ease; }
+  .tt-knob { position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.28); transition: transform .25s ease, background .25s ease; display: grid; place-items: center; }
+  .tt-ico { grid-area: 1 / 1; width: 12px; height: 12px; transition: opacity .2s ease; }
+  .tt-sun { color: #C98A22; }
+  .tt-moon { color: #1F6F5C; opacity: 0; }
+  .theme-toggle:hover .tt-track { background: color-mix(in srgb, var(--ink) 18%, transparent); }
+  .theme-toggle:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
+  html[data-theme="dark"] .tt-track { background: var(--link); box-shadow: none; }
+  html[data-theme="dark"] .tt-knob { transform: translateX(22px); background: #F3F0E8; }
+  html[data-theme="dark"] .tt-sun { opacity: 0; }
+  html[data-theme="dark"] .tt-moon { opacity: 1; }
+  @media (prefers-reduced-motion: reduce) { .tt-track, .tt-knob, .tt-ico { transition: none; } }
   html:not(.js) .theme-toggle { display: none; }
   @media (max-width: 640px) {
     .site-header .wrap { position: relative; }
-    .theme-toggle { position: absolute; top: -5px; right: calc(var(--gutter) - 6px); margin: 0; }
+    .theme-toggle { position: absolute; top: -4px; right: calc(var(--gutter) - 4px); margin: 0; }
   }
 </style>
 </head>
@@ -454,7 +461,7 @@
       <a href="#teaching">Teaching &amp; outreach</a>
       <a href="#cv">CV</a>
     </nav>
-    <button type="button" class="theme-toggle" aria-label="Switch to dark mode" title="Switch to dark mode"><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/></svg><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg></button>
+    <button type="button" class="theme-toggle" role="switch" aria-checked="false" aria-label="Dark mode" title="Dark mode"><span class="tt-track" aria-hidden="true"><span class="tt-knob"><svg class="tt-ico tt-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 3v1.8M12 19.2V21M3 12h1.8M19.2 12H21M5.6 5.6l1.3 1.3M17.1 17.1l1.3 1.3M5.6 18.4l1.3-1.3M17.1 6.9l1.3-1.3"/></svg><svg class="tt-ico tt-moon" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/></svg></span></span></button>
   </div>
 </header>
 
@@ -1181,7 +1188,7 @@
       var want = t === 'dark' ? im.getAttribute('data-dark-src') : im.getAttribute('data-light-src');
       if (im.getAttribute('src') !== want) im.setAttribute('src', want);
     });
-    if (btn) { var label = t === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'; btn.setAttribute('aria-label', label); btn.title = label; }
+    if (btn) btn.setAttribute('aria-checked', t === 'dark' ? 'true' : 'false');
     document.dispatchEvent(new CustomEvent('themechange', { detail: t }));
   }
   apply(root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
