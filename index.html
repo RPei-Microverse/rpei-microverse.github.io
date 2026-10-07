@@ -290,6 +290,13 @@
     .project-fig { max-width: 260px; }
     .grant { flex-direction: column; align-items: flex-start; }
   }
+  .concept { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.55fr); gap: 20px; align-items: end; margin: 0.6em 0 1em; }
+  .concept figure { margin: 0; display: flex; flex-direction: column; gap: 6px; }
+  .concept figcaption { font-family: var(--sans); font-size: 0.8125rem; line-height: 1.4; color: var(--muted); }
+  .shot.sketch { background: transparent; border-radius: 0; }
+  .shot.sketch img { aspect-ratio: auto; mix-blend-mode: multiply; }
+  .shot.sketch:hover img { transform: none; }
+  @media (max-width: 560px) { .concept { grid-template-columns: 1fr; } .concept figure:first-child { max-width: 300px; } }
 </style>
 </head>
 <body>
@@ -409,7 +416,7 @@
         <p>Knowing what the environment fixes and what it leaves open tells us what can be steered, turning assembly rules into design rules for nutrient removal and resource recovery.</p>
 
         <h3 class="group">Projects</h3>
-        <h4>Nitrifiers and their neighbors</h4>
+        <h4>Nitrifiers and their Partners</h4>
         <p class="where">University of Vienna, since 2024</p>
         <div class="project">
           <div class="project-text">
@@ -422,6 +429,16 @@
           <figure class="project-fig" data-gallery>
             <button type="button" class="shot" data-full="assets/gallery/nitrifiers-wwtp.webp" data-caption="Nitrifier microcolonies in activated sludge from a wastewater treatment plant."><img src="assets/gallery/nitrifiers-wwtp-sm.webp" width="640" height="640" alt="Confocal image of activated sludge with dense round microcolonies of nitrifying bacteria" loading="lazy"></button>
             <figcaption>Nitrifier microcolonies in activated sludge</figcaption>
+          </figure>
+        </div>
+        <div class="concept" data-gallery>
+          <figure>
+            <button type="button" class="shot sketch" data-full="assets/research/nitrifier-partners.webp" data-caption="Possible exchanges: amino acids and vitamin B12 out, organic carbon back, nitrite or nitrate to denitrifiers."><img src="assets/research/nitrifier-partners-sm.webp" width="720" height="713" alt="Watercolor sketch: a nitrifier takes up CO2 and ammonium, passes amino acids and vitamin B12 to a heterotroph that returns organic carbon, and supplies nitrite or nitrate to a denitrifier that releases N2; a phage sits on the nitrifier" loading="lazy"></button>
+            <figcaption>Possible exchanges: amino acids and vitamin B12 out, organic carbon back, nitrite or nitrate to denitrifiers.</figcaption>
+          </figure>
+          <figure>
+            <button type="button" class="shot sketch" data-full="assets/research/labeling-distance.webp" data-caption="Following ¹³C from nitrifiers: does labeling fade with distance, or spread through the community?"><img src="assets/research/labeling-distance-sm.webp" width="1000" height="449" alt="Two watercolor panels: a nitrifier fed 13C-labeled CO2 releases labeled compounds; on the left labeling decreases with distance, on the right labeled compounds are scattered throughout" loading="lazy"></button>
+            <figcaption>Following ¹³C from nitrifiers: does labeling fade with distance, or spread through the community?</figcaption>
           </figure>
         </div>
 
