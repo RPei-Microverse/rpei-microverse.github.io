@@ -277,6 +277,7 @@
   dialog.lightbox::backdrop { background: rgba(14, 24, 21, 0.88); }
   .lightbox figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 12px; }
   .lightbox img { display: block; max-width: min(1100px, 94vw); max-height: 80vh; width: auto; height: auto; border-radius: 10px; }
+  .lightbox img.headshot { width: min(440px, 84vw, 68vh); height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 16px; }
   .lightbox img.on-paper { background: var(--paper) url("assets/paper.jpg") repeat; padding: clamp(12px, 3vw, 32px); box-sizing: border-box; }
   .lightbox figcaption { font-family: var(--sans); font-size: 0.9375rem; line-height: 1.5; color: #e9efed; max-width: 70ch; text-align: justify; text-align-last: center; }
   .lb-btn { position: fixed; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; border: 0; cursor: pointer;
@@ -330,6 +331,9 @@
   .concept figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 10px; }
   .concept figcaption { font-family: var(--sans); font-size: 0.8125rem; line-height: 1.4; color: var(--muted); text-align: justify; text-align-last: center; max-width: 40ch; }
   .shot.sketch { background: transparent; border-radius: 0; }
+  .avatar.shot { width: 68px; padding: 0; border: 0; background: var(--wash); border-radius: 52% 48% 55% 45% / 48% 54% 46% 52%; }
+  .person:nth-child(3n+2) .avatar.shot { border-radius: 45% 55% 48% 52% / 55% 47% 53% 45%; }
+  .person:nth-child(3n) .avatar.shot { border-radius: 56% 44% 51% 49% / 46% 52% 48% 54%; }
   .shot.sketch img { aspect-ratio: auto; }
   .shot.sketch:hover img { transform: none; }
   @media (max-width: 560px) { .concept { grid-template-columns: 1fr; } .concept figure:first-child { width: 100%; max-width: 240px; justify-self: center; } }
@@ -642,9 +646,9 @@
         </figure>
 
         <h3>Current</h3>
-        <ul class="people">
+        <ul class="people" data-gallery>
           <li class="person">
-            <span class="avatar"><img src="assets/people/yizhou-xing-2.jpg" width="68" height="68" alt="" loading="lazy"></span>
+            <button type="button" class="avatar shot" data-full="assets/people/yizhou-xing-2-lg.jpg" aria-label="Enlarge photo of Yizhou Xing"><img src="assets/people/yizhou-xing-2.jpg" width="68" height="68" alt="Yizhou Xing" loading="lazy"></button>
             <span class="person-text">
               <a class="person-name" href="https://www.linkedin.com/in/yizhou-xing-27861621a/">Yizhou Xing</a>
               <span class="person-role">PhD student (co-supervised)</span>
@@ -654,17 +658,17 @@
         </ul>
 
         <h3>Former students</h3>
-        <ul class="people">
+        <ul class="people" data-gallery>
           <li class="person">
-            <span class="avatar"><img src="assets/people/ben-dhaene.jpg" width="68" height="68" alt="" loading="lazy"></span>
+            <button type="button" class="avatar shot" data-full="assets/people/ben-dhaene-lg.jpg" aria-label="Enlarge photo of Ben D'haene"><img src="assets/people/ben-dhaene.jpg" width="68" height="68" alt="Ben D'haene" loading="lazy"></button>
             <span class="person-text">
-              <span class="person-name">Ben D'haene</span>
+              <a class="person-name" href="https://www.linkedin.com/in/bendhaene/">Ben D'haene</a>
               <span class="person-role">Master internship</span>
               <span class="person-now">Now a PhD student at Wetsus and the University of Twente</span>
             </span>
           </li>
           <li class="person">
-            <span class="avatar"><img src="assets/people/jakob-rauter.jpg" width="68" height="68" alt="" loading="lazy"></span>
+            <button type="button" class="avatar shot" data-full="assets/people/jakob-rauter-lg.jpg" aria-label="Enlarge photo of Jakob Rauter"><img src="assets/people/jakob-rauter.jpg" width="68" height="68" alt="Jakob Rauter" loading="lazy"></button>
             <span class="person-text">
               <span class="person-name">Jakob Rauter</span>
               <span class="person-role">Master thesis</span>
@@ -672,7 +676,7 @@
             </span>
           </li>
           <li class="person">
-            <span class="avatar"><img src="assets/people/maryam-al-jahlawee.jpg" width="68" height="68" alt="" loading="lazy"></span>
+            <button type="button" class="avatar shot" data-full="assets/people/maryam-al-jahlawee-lg.jpg" aria-label="Enlarge photo of Maryam Al-Jahlawee"><img src="assets/people/maryam-al-jahlawee.jpg" width="68" height="68" alt="Maryam Al-Jahlawee" loading="lazy"></button>
             <span class="person-text">
               <span class="person-name">Maryam Al-Jahlawee</span>
               <span class="person-role">Master internship</span>
@@ -680,7 +684,7 @@
             </span>
           </li>
           <li class="person">
-            <span class="avatar"><img src="assets/people/terezija-jovanovski.jpg" width="68" height="68" alt="" loading="lazy"></span>
+            <button type="button" class="avatar shot" data-full="assets/people/terezija-jovanovski-lg.jpg" aria-label="Enlarge photo of Terezija Jovanovski"><img src="assets/people/terezija-jovanovski.jpg" width="68" height="68" alt="Terezija Jovanovski" loading="lazy"></button>
             <span class="person-text">
               <a class="person-name" href="https://www.linkedin.com/in/terezija-jovanovski/">Terezija Jovanovski</a>
               <span class="person-role">Master thesis</span>
@@ -688,7 +692,7 @@
             </span>
           </li>
           <li class="person">
-            <span class="avatar"><img src="assets/people/nouran-bahgat.jpg" width="68" height="68" alt="" loading="lazy"></span>
+            <button type="button" class="avatar shot" data-full="assets/people/nouran-bahgat-lg.jpg" aria-label="Enlarge photo of Nouran Bahgat"><img src="assets/people/nouran-bahgat.jpg" width="68" height="68" alt="Nouran Bahgat" loading="lazy"></button>
             <span class="person-text">
               <a class="person-name" href="https://www.linkedin.com/in/nouran-bahgat-a83920111/">Nouran Bahgat</a>
               <span class="person-role">Master thesis</span>
@@ -696,7 +700,7 @@
             </span>
           </li>
           <li class="person">
-            <span class="avatar"><img src="assets/people/laura-ortiz-seco.jpg" width="68" height="68" alt="" loading="lazy"></span>
+            <button type="button" class="avatar shot" data-full="assets/people/laura-ortiz-seco-lg.jpg" aria-label="Enlarge photo of Laura Ortiz Seco"><img src="assets/people/laura-ortiz-seco.jpg" width="68" height="68" alt="Laura Ortiz Seco" loading="lazy"></button>
             <span class="person-text">
               <a class="person-name" href="https://www.linkedin.com/in/laura-ortiz-seco-8147031b9/">Laura Ortiz Seco</a>
               <span class="person-role">Master thesis</span>
@@ -704,7 +708,7 @@
             </span>
           </li>
           <li class="person">
-            <span class="avatar"><img src="assets/people/lin-zeng.jpg" width="68" height="68" alt="" loading="lazy"></span>
+            <button type="button" class="avatar shot" data-full="assets/people/lin-zeng-lg.jpg" aria-label="Enlarge photo of Lin Zeng"><img src="assets/people/lin-zeng.jpg" width="68" height="68" alt="Lin Zeng" loading="lazy"></button>
             <span class="person-text">
               <span class="person-name">Lin Zeng</span>
               <span class="person-role">Master internship</span>
@@ -712,7 +716,7 @@
             </span>
           </li>
           <li class="person">
-            <span class="avatar"><img src="assets/people/rui-guo.jpg" width="68" height="68" alt="" loading="lazy"></span>
+            <button type="button" class="avatar shot" data-full="assets/people/rui-guo-lg.jpg" aria-label="Enlarge photo of Rui Guo"><img src="assets/people/rui-guo.jpg" width="68" height="68" alt="Rui Guo" loading="lazy"></button>
             <span class="person-text">
               <a class="person-name" href="https://www.linkedin.com/in/rui-guo-265618176/">Rui Guo</a>
               <span class="person-role">Master internship</span>
@@ -720,7 +724,7 @@
             </span>
           </li>
           <li class="person">
-            <span class="avatar"><img src="assets/people/marcos-cuesta-sanz.jpg" width="68" height="68" alt="" loading="lazy"></span>
+            <button type="button" class="avatar shot" data-full="assets/people/marcos-cuesta-sanz-lg.jpg" aria-label="Enlarge photo of Marcos Cuesta Sanz"><img src="assets/people/marcos-cuesta-sanz.jpg" width="68" height="68" alt="Marcos Cuesta Sanz" loading="lazy"></button>
             <span class="person-text">
               <a class="person-name" href="https://www.linkedin.com/in/cuesta-sanz-marcos/">Marcos Cuesta Sanz</a>
               <span class="person-role">Master internship</span>
@@ -728,7 +732,7 @@
             </span>
           </li>
           <li class="person">
-            <span class="avatar"><img src="assets/people/gerard-vicente-venegas.jpg" width="68" height="68" alt="" loading="lazy"></span>
+            <button type="button" class="avatar shot" data-full="assets/people/gerard-vicente-venegas-lg.jpg" aria-label="Enlarge photo of Gerard Vicente Venegas"><img src="assets/people/gerard-vicente-venegas.jpg" width="68" height="68" alt="Gerard Vicente Venegas" loading="lazy"></button>
             <span class="person-text">
               <span class="person-name">Gerard Vicente Venegas</span>
               <span class="person-role">Bachelor thesis</span>
@@ -736,7 +740,7 @@
             </span>
           </li>
           <li class="person">
-            <span class="avatar"><img src="assets/people/thomas-van-der-bent.jpg" width="68" height="68" alt="" loading="lazy"></span>
+            <button type="button" class="avatar shot" data-full="assets/people/thomas-van-der-bent-lg.jpg" aria-label="Enlarge photo of Thomas van der Bent"><img src="assets/people/thomas-van-der-bent.jpg" width="68" height="68" alt="Thomas van der Bent" loading="lazy"></button>
             <span class="person-text">
               <span class="person-name">Thomas van der Bent</span>
               <span class="person-role">Bachelor thesis</span>
@@ -744,7 +748,7 @@
             </span>
           </li>
           <li class="person">
-            <span class="avatar"><img src="assets/people/marta-cardoso.jpg" width="68" height="68" alt="" loading="lazy"></span>
+            <button type="button" class="avatar shot" data-full="assets/people/marta-cardoso-lg.jpg" aria-label="Enlarge photo of Marta Cardoso"><img src="assets/people/marta-cardoso.jpg" width="68" height="68" alt="Marta Cardoso" loading="lazy"></button>
             <span class="person-text">
               <a class="person-name" href="https://www.linkedin.com/in/martafscardoso/">Marta Cardoso</a>
               <span class="person-role">Technician, imaging and confocal microscopy</span>
@@ -1034,7 +1038,13 @@
     img.src = b.getAttribute('data-full') || t.currentSrc || t.src;
     img.alt = t.alt;
     img.classList.toggle('on-paper', b.classList.contains('sketch'));
-    cap.textContent = b.getAttribute('data-caption') || t.alt;
+    img.classList.toggle('headshot', b.classList.contains('avatar'));
+    var text = b.getAttribute('data-caption'), person = b.closest('.person');
+    if (!text && person) {
+      text = ['.person-name', '.person-role', '.person-now'].map(function (sel) { var e = person.querySelector(sel); return e ? e.textContent.trim() : ''; })
+        .filter(Boolean).join(' \u00b7 ');
+    }
+    cap.textContent = text || t.alt;
   }
   function open(btn) {
     var scope = btn.closest('[data-gallery]');
