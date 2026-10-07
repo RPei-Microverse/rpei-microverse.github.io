@@ -44,6 +44,7 @@
 
   *, *::before, *::after { box-sizing: border-box; }
   html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  html, body { overflow-x: clip; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   body {
     margin: 0;
@@ -425,7 +426,7 @@
   html[data-theme="dark"] ul.values li:nth-child(4n+3)::before { background-image: url("assets/wash-tile-3-dark.webp"); }
   html[data-theme="dark"] ul.values li:nth-child(4n+4)::before { background-image: url("assets/wash-tile-4-dark.webp"); }
   /* light/dark switch in the menu bar: an on/off slider */
-  .site-nav { margin-left: auto; }
+  @media (min-width: 641px) { .site-nav { margin-left: auto; } }
   .theme-toggle { flex: none; align-self: center; margin: -4px 0 -4px 10px; padding: 4px; border: 0; background: transparent; cursor: pointer; border-radius: 999px; }
   .tt-track { position: relative; display: block; width: 46px; height: 24px; border-radius: 999px; background: color-mix(in srgb, var(--ink) 12%, transparent); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ink) 14%, transparent); transition: background .25s ease; }
   .tt-knob { position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.28); transition: transform .25s ease, background .25s ease; display: grid; place-items: center; }
