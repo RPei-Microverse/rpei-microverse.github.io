@@ -212,7 +212,7 @@
   .gallery-section .wrap { display: block; }
   .gallery-section h2 { margin-bottom: 0.3em; }
   .gallery-intro { font-size: 1rem; color: var(--muted); margin: 0 0 1.4em; max-width: 60ch; }
-  ul.gallery { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 18px; }
+  ul.gallery { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
   ul.gallery li { display: flex; flex-direction: column; gap: 8px; }
   ul.gallery li.feature { grid-column: span 2; grid-row: span 2; }
   .shot { display: block; width: 100%; padding: 0; border: 0; background: #0d1412; border-radius: 14px; overflow: hidden; cursor: zoom-in; }
@@ -272,6 +272,8 @@
   .outreach-strip { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
   .outreach-strip .shot { border-radius: 8px; }
   .outreach-strip .shot img { aspect-ratio: 4 / 3; }
+  .path-photos.single { grid-template-columns: 1fr; }
+  .path-photos.single .shot img { aspect-ratio: auto; }
 </style>
 </head>
 <body>
@@ -317,9 +319,17 @@
   <section class="section gallery-section" id="gallery">
     <div class="wrap">
       <h2>Through the microscope</h2>
-      <p class="gallery-intro">Most of these confocal images come from my work on bioplastics, where stored PHA shows up green. Select an image to see it larger.</p>
+      <p class="gallery-intro">Confocal images from my work: nitrifiers in a wastewater treatment plant, polyphosphate-accumulating organisms in granular sludge, and activated sludge storing the bioplastic PHA, which shows up green. Select an image to see it larger.</p>
       <ul class="gallery" data-gallery>
           <li class="feature">
+            <button type="button" class="shot" data-full="assets/gallery/nitrifiers-wwtp.webp" data-caption="Nitrifier microcolonies in activated sludge from a wastewater treatment plant."><img src="assets/gallery/nitrifiers-wwtp-sm.webp" width="640" height="640" alt="Confocal image of activated sludge with dense round microcolonies of nitrifying bacteria among other cells" loading="lazy"></button>
+            <span class="shot-caption">Nitrifiers in a treatment plant</span>
+          </li>
+          <li>
+            <button type="button" class="shot" data-full="assets/gallery/pao-ags.webp" data-caption="Polyphosphate-accumulating organisms (PAOs) in aerobic granular sludge."><img src="assets/gallery/pao-ags-sm.webp" width="640" height="624" alt="Multicolor confocal image of aerobic granular sludge with clusters of polyphosphate-accumulating organisms" loading="lazy"></button>
+            <span class="shot-caption">PAOs in granular sludge</span>
+          </li>
+          <li>
             <button type="button" class="shot" data-full="assets/gallery/pha-filament-loop.webp" data-caption="A filamentous bacterium looping through an activated sludge floc. Green marks stored PHA, red the surrounding biomass."><img src="assets/gallery/pha-filament-loop-sm.webp" width="640" height="640" alt="Confocal image of a long filamentous bacterium looping through an activated sludge floc, with PHA in green" loading="lazy"></button>
             <span class="shot-caption">A filament looping through a sludge floc</span>
           </li>
@@ -720,6 +730,10 @@
             <span class="path-years">2024 to present</span>
             <span class="path-role">Postdoctoral researcher, University of Vienna</span>
             <span class="path-place">Division of Microbial Ecology, with Michael Wagner and Holger Daims</span>
+            <figure class="path-photos single">
+              <button type="button" class="shot" data-full="assets/cv/dome-team.webp" data-caption="The Division of Microbial Ecology (DOME) at the University of Vienna."><img src="assets/cv/dome-team-sm.webp" width="760" height="424" alt="Group photo of the Division of Microbial Ecology team standing in front of a brick wall" loading="lazy"></button>
+              <figcaption>The Division of Microbial Ecology (DOME)</figcaption>
+            </figure>
           </li>
           <li>
             <span class="path-years">2023 to 2024</span>
