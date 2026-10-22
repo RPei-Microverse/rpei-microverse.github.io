@@ -172,6 +172,14 @@
   ul.years { list-style: none; margin: 0 0 1em; padding: 0; }
   ul.years li { display: grid; grid-template-columns: 88px 1fr; gap: 16px; padding: 6px 0; font-size: 1rem; line-height: 1.5; }
   ul.years .yr { font-family: var(--sans); font-size: 0.9375rem; color: var(--muted); padding-top: 0.08em; }
+  /* News: the latest items show, older ones fold away until asked for */
+  .news-list.is-folded li.is-older { display: none; }
+  .news-more { display: inline-flex; align-items: center; gap: 8px; margin: 2px 0 0; padding: 6px 0; border: 0; background: none; cursor: pointer;
+    font-family: var(--sans); font-size: 0.9375rem; font-weight: 500; color: var(--link); text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 1.5px; text-underline-offset: 0.2em; }
+  .news-more:hover { color: var(--link-hover); text-decoration-thickness: 2.5px; }
+  .news-more::after { content: ""; width: 7px; height: 7px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: translateY(-2px) rotate(45deg); transition: transform .2s ease; }
+  .news-more[aria-expanded="true"]::after { transform: translateY(2px) rotate(-135deg); }
+  .news-more[hidden] { display: none; }
 
   ol.path { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--rule); }
   ol.path li { position: relative; padding: 0 0 1.4em 22px; }
@@ -515,6 +523,7 @@
           <li><span class="yr">May 2025</span><span>Our scale-up of PHA production from municipal sludge is out in <a href="https://doi.org/10.1016/j.watres.2025.123160" target="_blank" rel="noopener"><i>Water Research</i></a></span></li>
           <li><span class="yr">Feb 2024</span><span>Started as a postdoctoral researcher in the Division of Microbial Ecology (DOME), University of Vienna</span></li>
         </ul>
+        <button type="button" class="news-more" aria-expanded="false" hidden>Older news</button>
       </div>
     </div>
   </section>
@@ -1211,6 +1220,26 @@
     var follow = function (e) { var s = stored(); if (s !== 'dark' && s !== 'light') apply(e.matches ? 'dark' : 'light'); };
     if (mq.addEventListener) mq.addEventListener('change', follow); else if (mq.addListener) mq.addListener(follow);
   }
+})();
+</script>
+<script>
+// News: show the most recent items; the rest stay one click away
+(function () {
+  var SHOW = 5;
+  var list = document.querySelector('.news-list'), btn = document.querySelector('.news-more');
+  if (!list || !btn) return;
+  var items = list.querySelectorAll('li');
+  var older = items.length - SHOW;
+  if (older <= 0) return;
+  for (var i = SHOW; i < items.length; i++) items[i].classList.add('is-older');
+  list.classList.add('is-folded');
+  var label = function () {
+    var open = !list.classList.contains('is-folded');
+    btn.textContent = open ? 'Show fewer' : 'Older news (' + older + ')';
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  };
+  btn.hidden = false; label();
+  btn.addEventListener('click', function () { list.classList.toggle('is-folded'); label(); });
 })();
 </script>
 <script src="assets/aggregates.js" defer></script>
